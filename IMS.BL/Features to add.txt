@@ -1,0 +1,59 @@
+add unique constraint to username
+
+
+Create database
+	Learn about fuctions + views
+	Figure out how to find low/fast selling items
+	Design class requirements
+		Use info under "Create all Linq-Sql classes" + "General issues"
+	Build Db
+	
+	Figure out inheritance with Sql-linq class (e.g. Admin : User, Staff : User)
+		and User is defined in Sql-linq class	
+
+FEATURES TO WORK ON
+Return delivery/item data
+Allow editing of delivery/item data
+Graph of revenue over-time
+Accounts - Need single table inheritance (linq) for staffAccount and adminAccount
+Login
+Admin account can create new StaffAccount, give it all permission and name and password
+	when this StaffAccount first logins in, give option to change password
+
+Create all Linq-Sql classes
+		Setup factory class for LoginService
+		store current user 
+		store current GblValues
+
+	Make method to create new GblValues object
+		It takes values from DB
+		Combine into one constructor method
+		Refactor code
+		Throw exceptions for GetGblValues
+		Needs a finalizer if not destroyed automatically
+	
+	Make method to logout current user
+		create logoutUI
+			create UI page for login
+			create login()
+				using MVVM to change values where possible
+		then login in new user 
+			Check password + username + get userID from database
+		
+			User can create new CurrentDelivery
+				Get new currentDelivery method working
+				Get new currentDelivery to create new records in Item_CurrentDelivery table
+		
+			User can create new PastDelivery
+				Should inherit delivery class + add expectedArrival date + something else
+				Should have a createPastDelivery too
+
+UI
+
+General issues
+	GitHub repo for project
+	Create thread for .BL and one for .UI and one for database processes (?)
+	Have a set values method
+		For current GblValues object
+
+Add more catagories in enum catagories

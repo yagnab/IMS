@@ -1,0 +1,67 @@
+﻿<Page x:Class="IMS.UI.ViewTblPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IMS.UI"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="800"
+      Title="ViewTblPage">
+    <Grid>
+        <!-- Row + Column definitions-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="650" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Required contorls -->
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <ComboBox x:Name="tblComboBox" SelectionChanged="tblComboBox_SelectionChanged" ItemsSource="{Binding TableOptions}"/>
+        </StackPanel>
+        <!-- Item datagrid -->
+        <DataGrid x:Name="tblDatGrd" Grid.Row="2" Grid.ColumnSpan="4" AutoGenerateColumns="False" ItemsSource="{Binding CurrentTable}">
+            <DataGridTextColumn x:Name="ItemID"
+                                    Binding="{Binding ItemID}"
+                                    Header="ItemID"
+                                    Width="10" />
+            <DataGridTextColumn x:Name="Barcode"
+                                    Binding="{Binding Barcode}"
+                                    Header="Barcode"
+                                    Width="50" />
+            <DataGridTextColumn x:Name="Description"
+                                    Binding="{Binding Description}"
+                                    Header="Description"
+                                    Width="460" />
+            <DataGridTextColumn x:Name="RRP"
+                                    Binding="{Binding RRP}"
+                                    Header="RRP"
+                                    Width="30" />
+            <DataGridTextColumn x:Name="QuantityStockLevel"
+                                    Binding="{Binding QuantityStockLevel}"
+                                    Header="ItemID"
+                                    Width="30" />
+            <DataGridTextColumn x:Name="QuantityWeaklySaleRate"
+                                    Binding="{Binding QuantityWeaklySaleRate}"
+                                    Header="Sale rate (week)"
+                                    Width="30" />
+            <DataGridTextColumn x:Name="Catagory"
+                                    Binding="{Binding Catagory}"
+                                    Header="Catagory"
+                                    Width="40" />
+
+        </DataGrid>
+        
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="3" >
+            <Button x:Name="tillModeBtn" Margin="10,0,20,0" Content="Till Mode" />
+        </StackPanel>
+        
+    </Grid>
+</Page>

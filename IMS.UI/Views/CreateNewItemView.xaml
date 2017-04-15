@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="IMS.UI.Views.CreateNewItemView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IMS.UI.Views"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="300">
+    <Grid>
+        <!-- Column + row definitions-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        
+        <!--Controls-->
+        <!-- Input fields-->
+        <TextBox Text="Enter barcode"
+                 x:Name="BarcodeTxt"
+                 Grid.Column="1"
+                 Grid.Row="1"
+                 GotFocus="BarcodeTxt_GotFocus"/>
+        <TextBox Text="Enter description"
+                 x:Name="DescTxt"
+                 Grid.Column="1"
+                 Grid.Row="3"
+                 GotFocus="DescTxt_GotFocus"/>
+        <TextBox Text="Enter RRP"
+                 x:Name="RRPTxt"
+                 Grid.Column="1"
+                 Grid.Row="5"
+                 GotFocus="RRPTxt_GotFocus"
+                 LostFocus="RRPTxt_LostFocus"/>
+        <TextBox Text="Enter starting quantity level"
+                 x:Name="StartStockLvlTxt"
+                 Grid.Column="1"
+                 Grid.Row="7"
+                 GotFocus="StartStockLvlTxt_GotFocus"/>
+        
+        <!-- DataContext for this set in code behind-->
+        <ComboBox x:Name="CatagoryCmbBx"
+                  IsEditable="True"
+                  controls:TextBoxHelper.Watermark="Pick a catagory"
+                  Grid.Column="1"
+                 Grid.Row="9"/>
+
+        <Label x:Name="ErrorLbl"
+               Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"/>
+        <Button x:Name="SubmitBtn"
+                Content="Submit item"
+                Grid.Column="1"
+                Grid.Row="13"
+                Click="SubmitBtn_Click"/>
+
+    </Grid>
+</UserControl>

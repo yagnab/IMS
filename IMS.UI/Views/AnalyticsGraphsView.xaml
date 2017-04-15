@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="IMS.UI.Views.AnalyticsGraphsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IMS.UI.Views"
+             mc:Ignorable="d" 
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:oxy="http://oxyplot.org/wpf"
+             d:DesignHeight="600" d:DesignWidth="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="280" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Controls-->
+
+        <!-- DisplayMemberPath isn't a binding-->
+        <ComboBox Grid.Row="1" Grid.Column="1" 
+                              x:Name="GraphOptsCmbBx"
+                              IsEditable="True"
+                              controls:TextBoxHelper.Watermark="Pick a graph" 
+                              SelectionChanged="GraphOptsCmbBx_SelectionChanged">
+            <ComboBoxItem>All Items</ComboBoxItem>
+            <ComboBoxItem>Single Item</ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox x:Name="ItemChoiceCmbBx" Grid.Row="1" Grid.Column="2" Margin="10,0,0,0"
+                  IsEditable="True"
+                  controls:TextBoxHelper.Watermark="Pick an item"
+                  ItemsSource="{Binding items}"
+                  DisplayMemberPath="Description"
+                  Visibility="Hidden">
+        </ComboBox>
+
+        <ComboBox Grid.Row="3" Grid.Column="1"
+                  x:Name="TimePeriodCmbBX"
+                  IsEditable="True"
+                  SelectionChanged="GraphOptsCmbBx_SelectionChanged"
+                  controls:TextBoxHelper.Watermark="Pick a time period">
+            <ComboBoxItem>
+                Past Hour
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Past Day
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Past Week
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Past Year
+            </ComboBoxItem>
+        </ComboBox>
+
+        <Button x:Name="SubmitBtn" Content="Submit" Click="SubmitBtn_Click" Grid.Column="1" Grid.Row="5" />
+        <Label x:Name="ErrorLbl" Content="" Grid.Column="2" Grid.Row="5"/>
+
+        <!-- The graph to be displayed-->
+        <oxy:PlotView x:Name="graph" Model="{Binding plotModel}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+
+    </Grid>
+</UserControl>

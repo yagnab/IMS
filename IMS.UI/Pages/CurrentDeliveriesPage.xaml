@@ -1,0 +1,84 @@
+﻿<Page x:Class="IMS.UI.CurrentDeliveriesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IMS.UI"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="600"
+      Title="CurrentDeliveriesPage">
+
+    <Grid>
+        <!-- Row + Column definitions-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Display deliveries properties-->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" DataContext="{Binding SelectedDelivery}">
+            <Label x:Name="DeliveryIDLbl" Content="{Binding DeliveryID}"/>
+            <Label x:Name="ExpectedArrivalDateLbl" Content="{Binding ExpectedArrivalDate}" />
+            <Label x:Name="SupplierNameLbl" Content="{Binding SupplierName}"/>
+        </StackPanel>
+
+        <ListBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4"
+                    x:Name="ViewCurrDelLstBx"
+                    ItemsSource="{Binding AllCurrentDeliveries}"
+                    SelectionChanged="ViewCurrDelLstBx_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Label Content="DeliveryID:"/>
+                        <Label Content="{Binding DeliveryID}" />
+                        <Label Content="Expected Date:"/>
+                        <Label Content="{Binding ExpectedArrivalDate}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <!-- Display Items for delivery -->
+        <DataGrid Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2"
+                  x:Name="CurrDelItems"
+                  ItemsSource="{Binding SelectedItemDisplay}">
+            <DataGridTextColumn Header="ItemID"
+                                Binding="{Binding ItemID}"
+                                Width="SizeToHeader"/>
+            <DataGridTextColumn Header="Barcode"
+                                Binding="{Binding Barcode}"
+                                Width="50"/>
+            <DataGridTextColumn Header="Description"
+                                Binding="{Binding Description}"
+                                Width="100"/>
+            <DataGridTextColumn Header="RRP"
+                                Binding="{Binding RRP}"
+                                Width="SizeToHeader"/>
+            <DataGridTextColumn Header="Stock Level"
+                                Binding="{Binding QuantityStockLevel}"
+                                Width="SizeToHeader"/>
+            <DataGridTextColumn Header="Sale Rate(Weakly)"
+                                Binding="{Binding QuantityWeaklySaleRate}"
+                                Width="SizeToHeader"/>
+            <DataGridTextColumn Header="Catagory"
+                                Binding="{Binding Catagory}"
+                                Width="SizeToHeader"/>
+            
+        </DataGrid>
+        
+        <Button x:Name="AddDelBtn" Content="Add delivery" Grid.Row="7" Grid.Column="1" Click="AddDelBtn_Click"/>
+    </Grid>
+</Page>

@@ -1,0 +1,91 @@
+﻿<Page x:Class="IMS.UI.ItemsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IMS.UI"
+      mc:Ignorable="d" 
+      d:DesignHeight="430" d:DesignWidth="300"
+      Title="ItemsPage">
+
+    <Grid>
+        <!-- Row + Columns definition -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Display current Item's properties -->
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" DataContext="{Binding item}">
+            <Label x:Name="ItemIDLbl" Content="{Binding ItemID}"/>
+            <Label x:Name="DescriptionLbl" Content="{Binding Description}"/>
+            <Label x:Name="BarcodeLbl" Content="{Binding Barcode}"/>
+            <Label x:Name="RRPLbl" Content="{Binding RRP}"/>
+            <Label x:Name="StockLevelLbl" Content="{Binding QuantityStockLevel}"/>
+            <Label x:Name="SaleRateLbl" Content="{Binding QuantityWeaklySaleRate}"/>
+            <Label x:Name="CatagoryLbl" Content="{Binding Catagory}"/>
+        </StackPanel>
+        
+        <!-- Display all items from database -->
+        <ListBox Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3" 
+                 x:Name="ItemsLstBx" 
+                 ItemsSource="{Binding items}" 
+                 SelectionChanged="ItemsLstBx_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding ItemID}"/>
+                        <Label Content="{Binding Barcode}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <!-- Show all CurrentDeliveries for current item-->
+        <DataGrid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                  AutoGenerateColumns="False"
+                  x:Name="ItemArrivingDatGrd" 
+                  ItemsSource="{Binding currItemDeliveriesDisplays}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="DeliveryID"
+                                    Binding="{Binding ID}"
+                                    Width="SizeToHeader"/>
+                <DataGridTextColumn Header="Expected Date"
+                                    Binding="{Binding Date}"
+                                    Width="SizeToHeader"/>
+                <DataGridTextColumn Header="Quantity"
+                                    Binding="{Binding Quantity}"
+                                    Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Show all CurrentReservations for current item-->
+        <DataGrid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" 
+                AutoGenerateColumns="False"
+                x:Name="ItemLeavingDatGrd" 
+                ItemsSource="{Binding currItemReservationsDisplays}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ReservationID"
+                                Binding="{Binding ID}"
+                                Width="SizeToHeader"/>
+                <DataGridTextColumn Header="Expected Date"
+                                Binding="{Binding Date}"
+                                Width="SizeToHeader"/>
+                <DataGridTextColumn Header="Quantity"
+                                Binding="{Binding Quantity}"
+                                Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name="AddNewItemBtn" Content="Add new item" Grid.Row="3" Grid.Column="1"/>
+    </Grid>
+</Page>

@@ -1,0 +1,29 @@
+﻿<controls:MetroWindow x:Class="IMS.UI.UIWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:IMS.UI"
+        mc:Ignorable="d"
+        Title="Main menu" Height="768" Width="1366" 
+                      ResizeMode="CanResizeWithGrip"
+                      GlowBrush="{DynamicResource AccentColorBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button x:Name="MainMenuBtn" Content="Main menu" 
+                    Click="MainMenuBtn_Click"/>
+            <Button x:Name="LogoutBtn" Content="Logout"
+                    Click="LogoutBtn_Click"/>
+        </StackPanel>
+        <Frame x:Name="pageHolder" 
+               NavigationUIVisibility="Hidden"
+               Grid.Row="1"/>
+    </Grid>
+</controls:MetroWindow>
