@@ -67,48 +67,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AdminAccount.cs" />
-    <Compile Include="Classes\CurrentDelivery.cs" />
-    <Compile Include="Classes\CurrentReservation.cs" />
-    <Compile Include="Classes\Delivery.cs" />
-    <Compile Include="Display Classes\ItemCatagoryDisplay.cs" />
-    <Compile Include="Display Classes\ItemDisplay.cs" />
-    <Compile Include="Display Classes\DisplayBase.cs" />
-    <Compile Include="Display Classes\ItemDeliveryDisplay.cs" />
-    <Compile Include="Display Classes\ItemReservationDisplay.cs" />
-    <Compile Include="Display Classes\TilDataRow.cs" />
-    <Compile Include="Enums\GraphTimePeriod.cs" />
-    <Compile Include="Enums\InvalidationType.cs" />
-    <Compile Include="Enums\ItemCatagory.cs" />
     <Compile Include="InventoryDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>InventoryDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Item.cs" />
-    <Compile Include="Classes\ItemDelivery.cs" />
-    <Compile Include="Classes\ItemReservation.cs" />
-    <Compile Include="Classes\ItemTransaction.cs" />
-    <Compile Include="Classes\PastDelivery.cs" />
-    <Compile Include="PlotModels\DefaultPlotModel.cs" />
-    <Compile Include="PlotModels\PastDay.cs" />
-    <Compile Include="PlotModels\PastHour.cs" />
-    <Compile Include="Classes\PastReservation.cs" />
-    <Compile Include="PlotModels\PastMonth.cs" />
-    <Compile Include="PlotModels\PastWeek.cs" />
-    <Compile Include="PlotModels\PastYear.cs" />
-    <Compile Include="PlotModels\PlotModelCreator.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Classes\Reservation.cs" />
-    <Compile Include="Classes\StaffAccount.cs" />
-    <Compile Include="Classes\Supplier.cs" />
-    <Compile Include="Classes\Transaction.cs" />
-    <Compile Include="Classes\UserAccount.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="InventoryDB.mdf">
