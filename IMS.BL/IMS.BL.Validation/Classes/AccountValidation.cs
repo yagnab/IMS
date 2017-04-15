@@ -1,5 +1,4 @@
-﻿using IMS.BL;
-using IMS.BL.DataModel;
+﻿using IMS.BL.DataModel;
 using System.Linq;
 using System.Data.Entity;
 
