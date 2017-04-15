@@ -1,4 +1,4 @@
-﻿using IMS.BL;
+﻿using IMS.BL.DataModel;
 using IMS.BL.Validation;
 using IMS.UI.ViewModels;
 using System;

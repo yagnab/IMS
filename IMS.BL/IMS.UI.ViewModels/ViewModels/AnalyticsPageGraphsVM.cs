@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OxyPlot;
-using IMS.BL;
 using IMS.BL.DataModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;

@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using IMS.BL;
 using IMS.BL.DataModel;
 
 namespace IMS.UI

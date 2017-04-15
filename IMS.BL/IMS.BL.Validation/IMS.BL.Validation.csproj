@@ -74,10 +74,6 @@
       <Project>{da5db6fe-1e7a-449e-ab9b-162574d3f6de}</Project>
       <Name>IMS.BL.DataModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IMS.BL\IMS.BL.csproj">
-      <Project>{d4006657-b8db-427d-a1b4-d413b25e115d}</Project>
-      <Name>IMS.BL</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

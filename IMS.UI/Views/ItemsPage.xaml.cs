@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using IMS.UI.ViewModels;
-using IMS.BL;
+using IMS.BL.DataModel;
 
 namespace IMS.UI
 {

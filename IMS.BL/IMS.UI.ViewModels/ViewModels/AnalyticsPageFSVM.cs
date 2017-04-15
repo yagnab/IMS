@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using IMS.BL;
 using IMS.BL.DataModel;
 
 namespace IMS.UI.ViewModels

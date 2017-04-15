@@ -73,10 +73,6 @@
       <Project>{da5db6fe-1e7a-449e-ab9b-162574d3f6de}</Project>
       <Name>IMS.BL.DataModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IMS.BL\IMS.BL.csproj">
-      <Project>{d4006657-b8db-427d-a1b4-d413b25e115d}</Project>
-      <Name>IMS.BL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\IMS.UI.ViewModels\IMS.UI.ViewModels.csproj">
       <Project>{d0b06dba-6b24-44a3-9407-73ecaa0ebf82}</Project>
       <Name>IMS.UI.ViewModels</Name>

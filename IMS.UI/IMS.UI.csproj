@@ -297,10 +297,6 @@
       <Project>{21c710df-f806-42d2-9edd-5f45fac916a0}</Project>
       <Name>IMS.BL.Validation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IMS.BL\IMS.BL\IMS.BL.csproj">
-      <Project>{d4006657-b8db-427d-a1b4-d413b25e115d}</Project>
-      <Name>IMS.BL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\IMS.BL\IMS.UI.ViewModels\IMS.UI.ViewModels.csproj">
       <Project>{d0b06dba-6b24-44a3-9407-73ecaa0ebf82}</Project>
       <Name>IMS.UI.ViewModels</Name>

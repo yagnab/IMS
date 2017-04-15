@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using OxyPlot;
 using IMS.UI.ViewModels;
-using IMS.BL;
 using IMS.BL.DataModel;
 
 namespace IMS.UI.Views

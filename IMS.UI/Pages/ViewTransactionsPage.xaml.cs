@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using IMS.BL.DataModel;
 using IMS.UI.ViewModels;
-using IMS.BL;
 
 namespace IMS.UI
 {
