@@ -5,7 +5,6 @@
 
 #ignoring directories
 /useful-files/*
-/ims.bl/ims.bl*
 
 # User-specific files
 *.suo
