@@ -23,10 +23,6 @@ namespace IMS.BL.DataModel
             modelBuilder.Entity<UserAccount>().ToTable("UserAccount");
             modelBuilder.Entity<AdminAccount>().ToTable("AdminAccount");
             modelBuilder.Entity<StaffAccount>().ToTable("StaffAccount");
-
-            //Making UserAccount.Username a unique constraint
-            
-            
         }
 
         public DbSet<Supplier> Suppliers { get; set; }

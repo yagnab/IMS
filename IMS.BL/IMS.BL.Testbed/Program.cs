@@ -19,12 +19,42 @@ namespace IMS.BL.Testbed
     {
         static void Main(string[] args)
         {
-            if (IsUserSure())
+            using (var context = new InventoryContext())
             {
-                CreateNewStaffAccountUsingUserAccount();
-            }
+                Item item = new Item();
+                item.QuantityStockLevel = 12;
+                item.QuantityWeaklySaleRate = 0;
+                item.RRP = 99.00m;
+                item.Barcode = "aaaaaaaaaabbb";
+                item.Catagory = ItemCatagory.Chilled;
+                item.Description = "testSoftDrink1";
+                
+                Item item2 = new Item()
+                {
+                    Barcode = "aaaaaaaaaaaaaaaabbbb",
+                    QuantityStockLevel = 12,
+                    QuantityWeaklySaleRate = 0,
+                    RRP = 99.99m,
+                    Catagory = ItemCatagory.Alchol,
+                    Description = "testAlchol1"
+                };
 
+                AddItemToDb(item, context);
+                AddItemToDb(item2, context);
+            }
             NoF5Needed();
+        }
+        public static void AddItemToDb(Item item, InventoryContext dbContext)
+        {
+            using(dbContext)
+            {
+                dbContext.Items.Add(item);
+                dbContext.SaveChanges();
+            }
+        }
+        public static bool test(Func<int, bool> func, int number)
+        {
+            return func(number);
         }
 
         static void CreateNewStaffAccountUsingUserAccount()

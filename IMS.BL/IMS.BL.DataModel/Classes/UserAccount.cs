@@ -18,13 +18,11 @@ namespace IMS.BL.DataModel
 
         public static string stringToHashString(string s)
         {
-            byte[] bytes = Encoding.UTF8.GetBytes(s);
-
-            var sha1 = SHA1.Create();
-
-            byte[] hashBytes = sha1.ComputeHash(bytes);
-
             var sb = new StringBuilder();
+            byte[] bytes = Encoding.UTF8.GetBytes(s);
+            var sha1 = SHA1.Create();
+            byte[] hashBytes = sha1.ComputeHash(bytes);
+            
             foreach (byte b in bytes)
             {
                 var hex = b.ToString("x2");
