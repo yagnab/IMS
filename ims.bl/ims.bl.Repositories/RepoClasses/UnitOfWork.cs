@@ -16,7 +16,7 @@ namespace IMS.BL.Repositories
         public IPastDeliveriesRepo PastDeliveries { get; private set; }
         public IPastReservationsRepo PastReservations { get; private set; }
         public IStaffAccountsRepo StaffAccounts { get; private set; }
-
+        
         //constructor
         public UnitOfWork(InventoryContext context)
         {

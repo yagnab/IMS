@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IMS.BL.Repositories
 {
-    public interface IUnitOfWork 
+    public interface IUnitOfWork : IDisposable
     {
         //Repos
         IItemRepository Items { get; }
@@ -20,6 +20,5 @@ namespace IMS.BL.Repositories
         IPastReservationsRepo PastReservations { get; }
         IStaffAccountsRepo StaffAccounts { get; }
         void Complete();
-        void Dispose();
     }
 }

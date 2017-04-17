@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using IMS.BL.DataModel;
+using System.Linq;
 
 namespace IMS.BL.Repositories
 {
@@ -10,9 +11,19 @@ namespace IMS.BL.Repositories
         {
         }
 
-        public IEnumerable<ItemTransaction> AllPastItemTransactionFrom(DateTime time)
+        public IEnumerable<ItemTransaction> AllItemTransactionFrom(TimeSpan timePeriod)
         {
-            return null;
+            //finding out exact DateTime timePeriod into the past
+            DateTime pastTime = DateTime.Now.Subtract(timePeriod);
+
+            
+            //select all ItemTransactions where the date 
+            //was after pastTime
+            List<ItemTransaction> validItemTransactions = (from i in Context.Items
+                                            from i_t in i.ItemTransactions
+                                            where i_t.Transaction.TimeOfTransaction >= pastTime
+                                            select i_t).ToList();
+            return validItemTransactions;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace IMS.BL.Repositories
 {
     public interface IItemTransactionsRepo : IRepository<ItemTransaction>
     {
-        IEnumerable<ItemTransaction> AllPastItemTransactionFrom(DateTime time);
+        IEnumerable<ItemTransaction> AllItemTransactionFrom(TimeSpan timePeriod);
 
     }
 }
