@@ -8,12 +8,36 @@ namespace IMS.BL.Validation
 {
     public class DescriptionValidation : StringValidation
     {
-        public DescriptionValidation()
+        public bool isDescriptionLengthOk { get; private set; }
+        public bool anyIllegalCharacters { get; private set; }
+        public bool isDescriptionValid { get; private set; }
+        public DescriptionValidation(string description, string descriptionFieldName = "Description") : base(description, descriptionFieldName)
         {
-            ErrorMessage = "";
+            isDescriptionLengthOk = IsDescriptionLengthOk(description);
+            anyIllegalCharacters = AnyIllegalCharacters(description);
+
+            //setting isDescriptionValid
+            if(isDescriptionLengthOk && !anyIllegalCharacters)
+            {
+                isDescriptionValid = true;
+            }
+            else
+            {
+                isDescriptionValid = false;
+            }
+
+            //building error message
+            if(!isDescriptionLengthOk)
+            {
+                ErrorMessage += descriptionFieldName + "'s length must be less than 300 and more than 5.\n";
+            }
+            if(anyIllegalCharacters)
+            {
+                ErrorMessage += descriptionFieldName + " must only contain alphanumeric characters and an apostrophe.\n";
+            }
         }
 
-        public bool ValidateDescription(string description)
+        bool ValidateDescription(string description)
         {
             //Error message will show result of most recent validaiton
             ErrorMessage = "";
@@ -41,33 +65,33 @@ namespace IMS.BL.Validation
                 }
             }
         }
-        protected string IsDescriptionLengthOk(string description)
+        bool IsDescriptionLengthOk(string description)
         {
-            if(description.Length > 300)
+            if(description.Length > 300 || description.Length < 5)
             {
-                return "That Description is too long";
+                //length is not ok
+                return false;
             }
-            else if(description.Length < 5)
+            else
             {
-                return "That description is too short";
+                return true;
             }
-
-            //No validation error
-            return "";
         }
 
-        protected string IllegalCharactersCheck(string desciption)
+        bool AnyIllegalCharacters(string desciption)
         {
             //Only allows a-z, A-Z, 0-9 and apostrophe
             Regex rex = new Regex("^[a-zA-Z0-9']*$");
 
-            if (! rex.IsMatch(desciption))
+            if (!rex.IsMatch(desciption))
             {
-                return "Only Alphanumeric characters apostrophe allowed";
+                //illegal characters do exist in description
+                return true;
             }
-            
-            //No validaiton error
-            return "";
+            else
+            {
+                return false;
+            }
         }
     }
 }

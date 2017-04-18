@@ -11,6 +11,8 @@ using IMS.BL.DataModel;
 using IMS.UI;
 using IMS.UI.ViewModels;
 using System.Data.Objects;
+using IMS.BL.Repositories;
+using System.Text.RegularExpressions;
 
 namespace IMS.BL.Testbed
 {
@@ -19,28 +21,18 @@ namespace IMS.BL.Testbed
     {
         static void Main(string[] args)
         {
-            using (var context = new InventoryContext())
-            {
-                Item item = new Item();
-                item.QuantityStockLevel = 12;
-                item.QuantityWeaklySaleRate = 0;
-                item.RRP = 99.00m;
-                item.Barcode = "aaaaaaaaaabbb";
-                item.Catagory = ItemCatagory.Chilled;
-                item.Description = "testSoftDrink1";
-                
-                Item item2 = new Item()
-                {
-                    Barcode = "aaaaaaaaaaaaaaaabbbb",
-                    QuantityStockLevel = 12,
-                    QuantityWeaklySaleRate = 0,
-                    RRP = 99.99m,
-                    Catagory = ItemCatagory.Alchol,
-                    Description = "testAlchol1"
-                };
+            //Only allows a-z, A-Z, 0-9 and apostrophe
+            Regex rex = new Regex("^[a-zA-Z0-9']*$");
+            string description = "09123123asdBDAD/'";
 
-                AddItemToDb(item, context);
-                AddItemToDb(item2, context);
+            if (!rex.IsMatch(description))
+            {
+                //illegal characters do exist in description
+                Console.WriteLine("Illegal characters detected.");
+            }
+            else
+            {
+                Console.WriteLine("No illegal characters detected.");
             }
             NoF5Needed();
         }

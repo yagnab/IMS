@@ -18,5 +18,6 @@ namespace IMS.BL.Repositories
 
         void Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);
+        void Complete();
     }
 }

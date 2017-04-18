@@ -19,6 +19,5 @@ namespace IMS.BL.Repositories
         IPastDeliveriesRepo PastDeliveries { get; }
         IPastReservationsRepo PastReservations { get; }
         IStaffAccountsRepo StaffAccounts { get; }
-        void Complete();
     }
 }

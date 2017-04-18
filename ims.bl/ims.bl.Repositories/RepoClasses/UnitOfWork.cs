@@ -18,9 +18,9 @@ namespace IMS.BL.Repositories
         public IStaffAccountsRepo StaffAccounts { get; private set; }
         
         //constructor
-        public UnitOfWork(InventoryContext context)
+        public UnitOfWork()
         {
-            Context = context;
+            Context = new InventoryContext();
             Items = new ItemRepository(Context);
             ItemTransactions = new ItemTransactionsRepo(Context);
             AdminAccounts = new AdminAccountsRepo(Context);
@@ -33,13 +33,11 @@ namespace IMS.BL.Repositories
             StaffAccounts = new StaffAccountsRepo(Context);
         }
         
-        public void Complete()
-        {
-            Context.SaveChanges();
-        }
         //allows the use of using(UnitOfWork){}
+        //saves changes to database before it is disposed
         public void Dispose()
         {
+            Context.SaveChanges();
             Context.Dispose();
         }
     }

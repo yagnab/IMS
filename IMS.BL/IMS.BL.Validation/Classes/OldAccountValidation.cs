@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace IMS.BL.Validation.Classes
 {
-    class NewAccountValidation
+    public class OldAccountValidation
     {
+
     }
 }

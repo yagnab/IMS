@@ -9,7 +9,7 @@ using IMS.BL.DataModel;
 
 namespace IMS.BL.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IDisposable, IRepository<TEntity> where TEntity : class 
     {
         protected readonly InventoryContext Context;
 
@@ -51,6 +51,14 @@ namespace IMS.BL.Repositories
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
             Context.Set<TEntity>().RemoveRange(entities);
+        }
+        public void Complete()
+        {
+            Context.SaveChanges();
+        }
+        public void Dispose()
+        {
+            Context.Dispose();
         }
     }
 }

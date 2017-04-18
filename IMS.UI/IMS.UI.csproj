@@ -293,6 +293,10 @@
       <Project>{da5db6fe-1e7a-449e-ab9b-162574d3f6de}</Project>
       <Name>IMS.BL.DataModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IMS.BL\IMS.BL.Repositories\IMS.BL.Repositories.csproj">
+      <Project>{51f4ebba-e625-429e-8908-591a2fedac91}</Project>
+      <Name>IMS.BL.Repositories</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IMS.BL\IMS.BL.Validation\IMS.BL.Validation.csproj">
       <Project>{21c710df-f806-42d2-9edd-5f45fac916a0}</Project>
       <Name>IMS.BL.Validation</Name>
@@ -301,6 +305,9 @@
       <Project>{d0b06dba-6b24-44a3-9407-73ecaa0ebf82}</Project>
       <Name>IMS.UI.ViewModels</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TillMode\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

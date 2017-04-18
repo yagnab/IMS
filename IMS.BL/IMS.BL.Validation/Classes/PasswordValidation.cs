@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace IMS.BL.Validation
 {
-    public class PasswordValidation : StringValidation
+    public class ExistingPasswordValidation : StringValidation
     {
+        public PasswordValidation()
+        {
+
+        }
         public static string ValidatePassword(string password)
         {
             string errorMessage = "";

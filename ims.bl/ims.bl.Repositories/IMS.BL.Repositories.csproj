@@ -50,14 +50,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IItemRepository.cs" />
+    <Compile Include="Interfaces\IAdminAccounts.cs" />
+    <Compile Include="Interfaces\ICurrentDeliveries.cs" />
+    <Compile Include="Interfaces\ICurrentReservationsRepo.cs" />
+    <Compile Include="Interfaces\IItemDeliveriesRepo.cs" />
+    <Compile Include="Interfaces\IItemsRepository.cs" />
+    <Compile Include="Interfaces\IItemReservationsRepo.cs" />
+    <Compile Include="Interfaces\IItemTransactionsRepo.cs" />
+    <Compile Include="Interfaces\IPastDeliveries.cs" />
+    <Compile Include="Interfaces\IPastReservations.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IStaffAccounts.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Interfaces\IUserAccountRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepoClasses\AdminAccountsRepo.cs" />
+    <Compile Include="RepoClasses\CurrentDeliveriesRepo.cs" />
+    <Compile Include="RepoClasses\CurrentReservationsRepo.cs" />
+    <Compile Include="RepoClasses\ItemDeliveriesRepo.cs" />
     <Compile Include="RepoClasses\ItemRepository.cs" />
+    <Compile Include="RepoClasses\ItemReservationsRepo.cs" />
+    <Compile Include="RepoClasses\ItemTransactionRepo.cs" />
+    <Compile Include="RepoClasses\PastDeliveriesRepo.cs" />
+    <Compile Include="RepoClasses\PastReservationsRepo.cs" />
     <Compile Include="RepoClasses\Repository.cs" />
+    <Compile Include="RepoClasses\StaffAccountsRepo.cs" />
+    <Compile Include="RepoClasses\UnitOfWork.cs" />
+    <Compile Include="RepoClasses\UserAccountRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

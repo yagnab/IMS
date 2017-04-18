@@ -51,17 +51,22 @@
   <ItemGroup>
     <Compile Include="Classes\AccountValidation.cs" />
     <Compile Include="Classes\AdminAccountValidation.cs" />
-    <Compile Include="Classes\BarcodeValidation.cs" />
+    <Compile Include="Classes\NewAccountValidation.cs" />
+    <Compile Include="Classes\NewUsernameValidation.cs" />
+    <Compile Include="Classes\OldAccountValidation.cs" />
+    <Compile Include="Classes\OldBarcodeValidation.cs" />
     <Compile Include="Classes\CatagoryValidation.cs" />
     <Compile Include="Classes\DescriptionValidation.cs" />
     <Compile Include="Classes\IntegerValidation.cs" />
     <Compile Include="Classes\ItemCatagoryValidation.cs" />
-    <Compile Include="Classes\NewAccountValidation.cs" />
+    <Compile Include="Classes\OldNewAccountValidation.cs" />
+    <Compile Include="Classes\NewBarcodeValidation.cs" />
+    <Compile Include="Classes\ValidationBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\QuantityValidation.cs" />
     <Compile Include="Classes\RRPValidation.cs" />
     <Compile Include="Classes\StaffAccountValidation.cs" />
-    <Compile Include="Classes\ConfirmPasswordValidation.cs" />
+    <Compile Include="Classes\NewPasswordValidation.cs" />
     <Compile Include="Classes\PasswordValidation.cs" />
     <Compile Include="Classes\StringValidation.cs" />
     <Compile Include="Classes\UsernameValidation.cs" />
@@ -73,6 +78,10 @@
     <ProjectReference Include="..\IMS.BL.DataModel\IMS.BL.DataModel.csproj">
       <Project>{da5db6fe-1e7a-449e-ab9b-162574d3f6de}</Project>
       <Name>IMS.BL.DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMS.BL.Repositories\IMS.BL.Repositories.csproj">
+      <Project>{51f4ebba-e625-429e-8908-591a2fedac91}</Project>
+      <Name>IMS.BL.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

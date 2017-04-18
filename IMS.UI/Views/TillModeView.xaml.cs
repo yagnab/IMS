@@ -1,4 +1,5 @@
 ﻿using IMS.BL.DataModel;
+using IMS.BL.Repositories;
 using IMS.BL.Validation;
 using IMS.UI.ViewModels;
 using System;
@@ -36,52 +37,23 @@ namespace IMS.UI.Views
 
         private void AddNewItemBtn_Click(object sender, RoutedEventArgs e)
         {
-            string errorMessage = "";
             string barcode = BarcodeTB.Text;
-            Item item = null;
+            var newBV = new NewBarcodeValidation(barcode);
 
-            //First stage validation
-            if(!IsBarcodeEmpty(barcode, errorMessage))
+            //if validation passed
+            if(newBV.isNewBarcodeValid)
             {
-                if ( DoesBarcodeExist(barcode, ref errorMessage, ref item) )
-                {
-
-                }
-            }
-
-        }
-
-        bool IsBarcodeEmpty(string barcode, string errorMessage)
-        {
-            //Validate barcode
-            errorMessage += StringValidation.IsStringNullOrWhiteSpace(barcode);
-
-            if (errorMessage != "")
-            {
-                ErrorLbl.Content = errorMessage;
-                return true;
+                MessageBox.Show("It worked");
             }
             else
             {
-                return false;
+                ErrorLbl.Content = newBV.ErrorMessage;
             }
+
+            //allow for reuse of object
+            newBV.Complete();
         }
 
-        bool DoesBarcodeExist(string barcode, ref string errorMessage, ref Item item)
-        {
-            BarcodeValidation bv = new BarcodeValidation();
-            item = bv.GetItemFromBarcode(barcode);
-
-            //Barcode doesn't exist
-            if (item == null)
-            {
-                errorMessage += bv.ErrorMessage;
-                ErrorLbl.Content = errorMessage;
-                AskToCreateNewItem(barcode);
-                return false;
-            }
-            return true;
-        }
         /// <summary>
         /// Will prompt the user to add an item
         /// With the barcode they just entered
