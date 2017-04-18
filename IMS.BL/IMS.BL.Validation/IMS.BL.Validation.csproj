@@ -57,10 +57,12 @@
     <Compile Include="Classes\OldBarcodeValidation.cs" />
     <Compile Include="Classes\CatagoryValidation.cs" />
     <Compile Include="Classes\DescriptionValidation.cs" />
-    <Compile Include="Classes\IntegerValidation.cs" />
+    <Compile Include="Classes\StringToNumberValidation.cs" />
     <Compile Include="Classes\ItemCatagoryValidation.cs" />
     <Compile Include="Classes\OldNewAccountValidation.cs" />
     <Compile Include="Classes\NewBarcodeValidation.cs" />
+    <Compile Include="Classes\OldPasswordValidation.cs" />
+    <Compile Include="Classes\OldUsernameValidation.cs" />
     <Compile Include="Classes\ValidationBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\QuantityValidation.cs" />
@@ -70,6 +72,8 @@
     <Compile Include="Classes\PasswordValidation.cs" />
     <Compile Include="Classes\StringValidation.cs" />
     <Compile Include="Classes\UsernameValidation.cs" />
+    <Compile Include="StringToDecimalValidation.cs" />
+    <Compile Include="StringToIntegerValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -86,7 +90,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

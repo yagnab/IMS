@@ -8,9 +8,10 @@ using System.Collections;
 
 namespace IMS.BL.Validation
 {
-    public class QuantityValidation : IntegerValidation
+    public class QuantityValidation : StringToIntegerValidation
     {
-        public int Quantity { get; set; }
+        public int intQuantity { get; private set; }
+        public bool isQuantitySensible { get; private set; }
         public QuantityValidation() : base()
         {
         }

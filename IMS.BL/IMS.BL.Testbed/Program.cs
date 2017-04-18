@@ -21,10 +21,15 @@ namespace IMS.BL.Testbed
     {
         static void Main(string[] args)
         {
-            using (var dbContext = new InventoryContext())
+            string _decimal = "$1231.46";
+            try
             {
-                var userDoesntExist = dbContext.UserAccounts.Where(u => u.Username == "madeupstuff").ToList();
-                Console.WriteLine(userDoesntExist.Count);
+                decimal realDecimal = Decimal.Parse(_decimal);
+                Console.WriteLine(realDecimal);
+            }
+            catch(Exception)
+            {
+                Console.WriteLine("Works as expected.");
             }
             NoF5Needed();
         }
