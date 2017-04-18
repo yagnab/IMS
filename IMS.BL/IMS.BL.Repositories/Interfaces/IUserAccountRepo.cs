@@ -9,6 +9,6 @@ namespace IMS.BL.Repositories
 {
     public interface IUserAccountRepo : IRepository<UserAccount>
     {
-        IEnumerable<UserAccount>
+        List<UserAccount> UserAccountByUsername(string username);
     }
 }

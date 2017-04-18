@@ -21,18 +21,10 @@ namespace IMS.BL.Testbed
     {
         static void Main(string[] args)
         {
-            //Only allows a-z, A-Z, 0-9 and apostrophe
-            Regex rex = new Regex("^[a-zA-Z0-9']*$");
-            string description = "09123123asdBDAD/'";
-
-            if (!rex.IsMatch(description))
+            using (var dbContext = new InventoryContext())
             {
-                //illegal characters do exist in description
-                Console.WriteLine("Illegal characters detected.");
-            }
-            else
-            {
-                Console.WriteLine("No illegal characters detected.");
+                var userDoesntExist = dbContext.UserAccounts.Where(u => u.Username == "madeupstuff").ToList();
+                Console.WriteLine(userDoesntExist.Count);
             }
             NoF5Needed();
         }

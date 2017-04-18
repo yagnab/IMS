@@ -7,6 +7,7 @@ using IMS.BL.DataModel;
 
 namespace IMS.BL.Validation
 {
+    /*
     public class UsernameValidation : StringValidation
     {
         public static string ValidateUsername(string username)
@@ -48,5 +49,5 @@ namespace IMS.BL.Validation
                 return "";
             }
         }
-    }
+    }*/
 }

@@ -11,6 +11,7 @@ namespace IMS.BL.Validation
     public class OldBarcodeValidation : StringValidation
     {
         public bool doesBarcodeExist { get; private set; }
+        public bool isOldBarcodeValid { get; private set; }
         /// <summary>
         /// fieldName is "barcode" by default.
         /// Call Complete() when done with this.
@@ -20,6 +21,17 @@ namespace IMS.BL.Validation
         public OldBarcodeValidation(string barcode, string fieldName = "barcode") : base(barcode, fieldName)
         {
             doesBarcodeExist = DoesBarcodeExist(barcode);
+
+            //setting isOldBarcodeValid
+            if(!doesBarcodeExist && isStringValid)
+            {
+                isOldBarcodeValid = true;
+            }
+            else
+            {
+                isOldBarcodeValid = false;
+            }
+
             if(!doesBarcodeExist)
             {
                 ErrorMessage += "That Barcode doesn't exist";

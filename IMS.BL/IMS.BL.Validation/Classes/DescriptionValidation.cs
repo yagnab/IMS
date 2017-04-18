@@ -17,7 +17,7 @@ namespace IMS.BL.Validation
             anyIllegalCharacters = AnyIllegalCharacters(description);
 
             //setting isDescriptionValid
-            if(isDescriptionLengthOk && !anyIllegalCharacters)
+            if(isDescriptionLengthOk && !anyIllegalCharacters && isStringValid)
             {
                 isDescriptionValid = true;
             }
@@ -36,35 +36,7 @@ namespace IMS.BL.Validation
                 ErrorMessage += descriptionFieldName + " must only contain alphanumeric characters and an apostrophe.\n";
             }
         }
-
-        bool ValidateDescription(string description)
-        {
-            //Error message will show result of most recent validaiton
-            ErrorMessage = "";
-
-            ErrorMessage += ValidateString(description);
-            
-            //If description is empty or whitespace
-            if(ErrorMessage != "")
-            {
-                return false;
-            }
-            else
-            {
-                ErrorMessage += IsDescriptionLengthOk(description);
-                ErrorMessage += IllegalCharactersCheck(description);
-
-                if (ErrorMessage == "")
-                {
-                    return true;
-                }
-                else
-                {
-                    //Errors found
-                    return false;
-                }
-            }
-        }
+        
         bool IsDescriptionLengthOk(string description)
         {
             if(description.Length > 300 || description.Length < 5)

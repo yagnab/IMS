@@ -24,7 +24,7 @@ namespace IMS.BL.Validation
             isBarcodeOnlyDigits = IsBarcodeOnlyDigits(newBarcode);
 
             //setting isNewBarcodeValid
-            if(doesBarcodeExist || !isBarcodeOnlyDigits || !isBarcodeLengthOK)
+            if(doesBarcodeExist || !isBarcodeOnlyDigits || !isBarcodeLengthOK || !isStringValid)
             {
                 isNewBarcodeValid = false;
             }

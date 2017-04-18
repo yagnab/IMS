@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace IMS.BL.Validation
 {
+    /*
     public class ExistingPasswordValidation : StringValidation
     {
         public PasswordValidation()
@@ -32,5 +33,5 @@ namespace IMS.BL.Validation
             }
             return "";
         }
-    }
+    }*/
 }
