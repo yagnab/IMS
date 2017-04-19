@@ -125,6 +125,9 @@
     <Compile Include="Pages\LowStockPage.xaml.cs">
       <DependentUpon>LowStockPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ViewCurrentDeliveriesPage.xaml.cs">
+      <DependentUpon>ViewCurrentDeliveriesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreateNewItemView.xaml.cs">
       <DependentUpon>CreateNewItemView.xaml</DependentUpon>
     </Compile>
@@ -169,6 +172,9 @@
     <Compile Include="Pages\ViewTransactionsPage.xaml.cs">
       <DependentUpon>ViewTransactionsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewCurrentDeliveriesView.xaml.cs">
+      <DependentUpon>ViewCurrentDeliveriesView.xaml</DependentUpon>
+    </Compile>
     <Page Include="Creating new account\AddUserDetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,6 +200,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\LowStockPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ViewCurrentDeliveriesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -250,6 +260,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ViewTransactionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewCurrentDeliveriesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

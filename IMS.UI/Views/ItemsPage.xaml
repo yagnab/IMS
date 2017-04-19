@@ -43,7 +43,9 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
+                        <Label>ID:</Label>
                         <Label Content="{Binding ItemID}"/>
+                        <Label> Barcode:</Label>
                         <Label Content="{Binding Barcode}" />
                     </StackPanel>
                 </DataTemplate>

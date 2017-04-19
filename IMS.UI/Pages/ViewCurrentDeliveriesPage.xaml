@@ -1,0 +1,25 @@
+﻿<Page x:Class="IMS.UI.Pages.ViewCurrentDeliveriesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IMS.UI.Pages"
+      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:views="clr-namespace:IMS.UI.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="ViewCurrentDeliveriesPage">
+
+    <Grid>
+        <controls:MetroAnimatedTabControl>
+            <TabItem x:Name="TillMode" 
+                     Header="Till mode">
+                <views:TillModeView/>
+            </TabItem>
+            <TabItem x:Name="NewItemTab" 
+                     Header="Create new item">
+                <views:CreateNewItemView/>
+            </TabItem>
+        </controls:MetroAnimatedTabControl>
+    </Grid>
+</Page>
