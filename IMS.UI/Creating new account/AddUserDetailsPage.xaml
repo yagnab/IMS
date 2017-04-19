@@ -4,16 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:IMS.UI"
-      xmlns:vm="clr-namespace:IMS.UI.ViewModels;assembly=IMS.UI.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="330" d:DesignWidth="300"
       Title="AddUserDetailsPage">
     
-    <Page.Resources>
-        <vm:AddUserDetailsPageVM x:Key="viewModel"/>
-    </Page.Resources>
-    
-    <Grid DataContext="{StaticResource viewModel}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
