@@ -45,7 +45,5 @@ namespace IMS.UI
             ItemArrivingDatGrd.UpdateLayout();
             ItemLeavingDatGrd.UpdateLayout();
         }
-
-
     }
 }

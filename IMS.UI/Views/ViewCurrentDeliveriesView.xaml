@@ -5,60 +5,76 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:IMS.UI.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="500" d:DesignWidth="600">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <!--Labels to display current deliveries attributes-->
-        <StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="0" DataContext="CurrentDelivery">
             <Label Content="DeliveryID"/>
-            <Label Content="{Binding DeliveryID}"/>
-            <Label Content="ExpectedArrivalDate"/>
-            <Label Content="{Binding ExpectedArrivalDate}"/>
+            <Label Content="{Binding DeliveryID}" Height="30"/>
+            <Label Content="ExpectedArrivalDate" />
+            <Label Content="{Binding ExpectedArrivalDate}" Height="30"/>
         </StackPanel>
-        
-        <!-- Show all Items for current delivery-->
-        <DataGrid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" 
+
+        <ScrollViewer Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="3">
+            <!-- Show all Items for current delivery-->
+            <DataGrid 
                 AutoGenerateColumns="False"
                 x:Name="ItemsDatGrid" 
-                DataContext="CurrentDelivery.Items"
+                DataContext="CurrentItemDeliveries"
                 ItemsSource="{Binding Items}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ItemID"
-                                Binding="{Binding ID}"
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ItemID"
+                                Binding="{Binding Item.ItemID}"
                                 Width="SizeToHeader"/>
-                <DataGridTextColumn Header="Barcode"
-                                Binding="{Binding Barcode}"
+                    <DataGridTextColumn Header="Barcode"
+                                Binding="{Binding Item.Barcode}"
                                 Width="SizeToHeader"/>
-                <DataGridTextColumn Header="Description"
-                                Binding="{Binding Date}"
+                    <DataGridTextColumn Header="Description"
+                                Binding="{Binding Item.Description}"
                                 Width="SizeToHeader"/>
-                <DataGridTextColumn Header="Quantity in stock"
-                                Binding="{Binding QuantityStockLevel}"
+                    <DataGridTextColumn Header="Quantity in stock"
+                                Binding="{Binding Item.QuantityStockLevel}"
                                 Width="SizeToHeader"/>
-                <DataGridTextColumn Header="RRP"
-                                Binding="{Binding RRP}"
+                    <DataGridTextColumn Header="RRP"
+                                Binding="{Binding Item.RRP}"
                                 Width="SizeToHeader"/>
-                <DataGridTextColumn Header="Catagory"
-                                Binding="{Binding Catagory}"
+                    <DataGridTextColumn Header="Quantity"
+                                Binding="{Binding Quantity}"
                                 Width="SizeToHeader"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        
-        <!-- Display all CurrentDeliveries from database -->
-        <ListBox Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3" 
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+            <!-- Display all CurrentDeliveries from database -->
+            <ListBox  
                  x:Name="CurrentDeliveriesList" 
                  ItemsSource="{Binding CurrentDeliveries}" 
                  SelectionChanged="ItemsLstBx_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Label>ID:</Label>
-                        <Label Content="{Binding DeliveryID}"/>
-                        <Label>Expected date:</Label>
-                        <Label Content="{Binding ExpectedArrivalDate}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>ID:</Label>
+                            <Label Content="{Binding DeliveryID}"/>
+                            <Label>Expected date:</Label>
+                            <Label Content="{Binding ExpectedArrivalDate}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
     </Grid>
 </UserControl>
