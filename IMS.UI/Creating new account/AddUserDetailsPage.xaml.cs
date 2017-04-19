@@ -63,17 +63,31 @@ namespace IMS.UI
             string username = UsernameTxt.Text;
             string password = passwordBox.Password;
             string confirmPassword = ConfirmPasswordBox.Password;
+            var naV = new NewAccountValidation(username, password, confirmPassword);
 
+            //validation passed
+            if(naV.isNewAccountValid)
+            {
+                //stores username and hashed password
+                CreateNewAccountService.Instance.username = username;
+                CreateNewAccountService.Instance.password = UserAccount.stringToHashString(password);
+
+                //show next window
+                var ui = UICreatePage.GetAdminDetailsPage();
+                CreateNewAccountService.Instance.Window.Content = ui;
+            }
+            /*
             string errorMessage = ValidateInputs(username, password, confirmPassword);
 
             //Take action depending on validation from above
-            IsInputValid(errorMessage, username, password);
+            IsInputValid(errorMessage, username, password);*/
         }
-
+        /*
         #region Validation
         string ValidateInputs(string username, string password, string confirmPassword)
         {
             string errorMessage = "";
+            var naV = new NewAccountValidation(username, password, confirmPassword);
             errorMessage += UsernameValidation.ValidateUsername(username);
             errorMessage += PasswordValidation.ValidatePassword(password);
             errorMessage += ConfirmPasswordValidation.ValidateConfirmPassword(password, confirmPassword);
@@ -97,7 +111,7 @@ namespace IMS.UI
                 ClearInputFields();
             }
         }
-        #endregion
+        #endregion*/
 
         #region Utility methods
         void ClearInputFields()

@@ -84,6 +84,7 @@ namespace IMS.UI.Views
 
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
+            /*
             string errorMessage = "";
 
             //Objects required for validaiton
@@ -102,8 +103,25 @@ namespace IMS.UI.Views
             //Carry out validation
             errorMessage = ValidateFields(errorMessage, barcode, description, rrp, stockLevel,
                 catagoryIndex, dv, bv, qv, icv);
-            ValidationPassOrNot(errorMessage, barcode, rrp, description, qv, icv);
+            ValidationPassOrNot(errorMessage, barcode, rrp, description, qv, icv);*/
 
+            //Vars for validation
+            string barcode = BarcodeTxt.Text;
+            string description = DescTxt.Text;
+            string rrp = RRPTxt.Text;
+            string stockLevel = StartStockLvlTxt.Text;
+            int catagoryIndex = CatagoryCmbBx.SelectedIndex;
+            var niV = new NewItemValidation(barcode, description, rrp, stockLevel, catagoryIndex);
+
+            //passed validation
+            if(niV.isNewItemValid)
+            {
+                MessageBox.Show("Worked");
+            }
+            else
+            {
+                ErrorLbl.Content = niV.ErrorMessage;
+            }
         }
         /// <summary>
         /// Carries out validation for RRPTxt
@@ -150,29 +168,34 @@ namespace IMS.UI.Views
             }
         }
 
-        string ValidateFields(string errorMessage, string barcode, string description, string rrp, string stockLevel, int catagoryIndex, 
-            DescriptionValidation dv, BarcodeValidation bv, QuantityValidation qv, ItemCatagoryValidation icv)
+        private void resetBtn_Click(object sender, RoutedEventArgs e)
         {
-            errorMessage += bv.ValidateNewBarcode(barcode);
-            if (!dv.ValidateDescription(description))
-            {
-                errorMessage += dv.ErrorMessage;
-            }
-            errorMessage += StringValidation.IsStringNullOrWhiteSpace(rrp);
-
-            if (!qv.ValidateNewQuantity(stockLevel))
-            {
-                errorMessage += qv.ErrorMessage;
-            }
-
-            if (!icv.ValidateItemCatagoryIndex(catagoryIndex))
-            {
-                errorMessage = icv.ErrorMessage;
-            }
-
-            return errorMessage;
+            SetToDefault();
         }
+        /*
+string ValidateFields(string errorMessage, string barcode, string description, string rrp, string stockLevel, int catagoryIndex, 
+   DescriptionValidation dv, BarcodeValidation bv, QuantityValidation qv, ItemCatagoryValidation icv)
+{
+   errorMessage += bv.ValidateNewBarcode(barcode);
+   if (!dv.ValidateDescription(description))
+   {
+       errorMessage += dv.ErrorMessage;
+   }
+   errorMessage += StringValidation.IsStringNullOrWhiteSpace(rrp);
 
+   if (!qv.ValidateNewQuantity(stockLevel))
+   {
+       errorMessage += qv.ErrorMessage;
+   }
+
+   if (!icv.ValidateItemCatagoryIndex(catagoryIndex))
+   {
+       errorMessage = icv.ErrorMessage;
+   }
+
+   return errorMessage;
+}*/
+        /*
         void ValidationPassOrNot(string errorMessage, string barcode, string rrp, string description, QuantityValidation qv, ItemCatagoryValidation icv)
         {
             //Check if all validations passed
@@ -184,6 +207,6 @@ namespace IMS.UI.Views
             {
                 ErrorLbl.Content = errorMessage;
             }
-        }
+        }*/
     }
 }

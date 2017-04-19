@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IMS.BL.Validation
 {
-    class NewAccountValidation : ValidationBase
+    public class NewAccountValidation : ValidationBase
     {
         public bool isUsernameValid { get; private set; }
         public bool arePasswordsValid { get; private set; }

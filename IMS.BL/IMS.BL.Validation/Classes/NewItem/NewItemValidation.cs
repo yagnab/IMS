@@ -13,7 +13,6 @@ namespace IMS.BL.Validation
         public bool isDescriptionValid { get; private set; }
         public bool isRRPValid { get; private set; }
         public bool isStockLevelValid { get; private set; }
-        public bool isSaleRateValid { get; private set; }
         public bool isCatagoryValid { get; private set; }
         public bool isNewItemValid { get; private set; }
         /// <summary>
@@ -27,20 +26,18 @@ namespace IMS.BL.Validation
         /// <param name="stockLevel"></param>
         /// <param name="saleRate"></param>
         /// <param name="catagoryIndex"></param>
-        public NewItemValidation(string barcode, string description, string rrp, string stockLevel, string saleRate, int catagoryIndex) : base()
+        public NewItemValidation(string barcode, string description, string rrp, string stockLevel, int catagoryIndex) : base()
         {
             var nbV = new NewBarcodeValidation(barcode);
             var dV = new DescriptionValidation(description);
             var rrpV = new RRPValidation(rrp);
             var stockLevelValidator = new StringToIntegerValidation(stockLevel);
-            var saleRateValidatator = new StringToIntegerValidation(saleRate);
-
+            
             //setting properties
             isBarcodeValid = nbV.isNewBarcodeValid;
             isDescriptionValid = dV.isDescriptionValid;
             isRRPValid = rrpV.isStringDecimalValid;
             isStockLevelValid = stockLevelValidator.isStringIntegerValid;
-            isSaleRateValid = saleRateValidatator.isStringIntegerValid;
             isCatagoryValid = IsCatagoryValid(catagoryIndex);
 
             //building error message
@@ -49,7 +46,7 @@ namespace IMS.BL.Validation
                 ErrorMessage += "Pick a valid catagory.\n";
             }
             ErrorMessage += nbV.ErrorMessage + dV.ErrorMessage + rrpV.ErrorMessage 
-                + stockLevelValidator.ErrorMessage + saleRateValidatator.ErrorMessage;
+                + stockLevelValidator.ErrorMessage;
         }
         bool IsCatagoryValid(int catagoryIndex)
         {
