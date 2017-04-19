@@ -34,7 +34,6 @@ namespace IMS.UI.Views
         {
             var barcodeTxt = (TextBox)sender;
             //make text blank
-            //then remove this event
             barcodeTxt.Text = "";
         }
         void SetToDefault()
@@ -114,11 +113,11 @@ namespace IMS.UI.Views
         /// <param name="e"></param>
         private void RRPTxt_LostFocus(object sender, RoutedEventArgs e)
         {
-            var rrpV = new RRPValidation();
             string rrp = RRPTxt.Text;
-
+            var rrpV = new RRPValidation(rrp);
+            
             //If validation failed
-            if(!rrpV.ValidateRRPFromString(rrp))
+            if(!rrpV.isStringDecimalValid)
             {
                 //Shows error
                 ErrorLbl.Content = rrpV.ErrorMessage;
@@ -129,7 +128,8 @@ namespace IMS.UI.Views
             }
             else
             {
-                RRPTxt.Text = rrpV.RRP.ToString();
+                //This will round to 2dp to make it look like curreny
+                RRPTxt.Text = RRPValidation.DecimalFromString(rrp).ToString();
             }
         }
 

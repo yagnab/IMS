@@ -16,22 +16,43 @@ using System.Text.RegularExpressions;
 
 namespace IMS.BL.Testbed
 {
-
+    public class Test
+    {
+        public string ErrorMessage { get; private set; }
+        public Test()
+        {
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            string _decimal = "$1231.46";
-            try
-            {
-                decimal realDecimal = Decimal.Parse(_decimal);
-                Console.WriteLine(realDecimal);
-            }
-            catch(Exception)
-            {
-                Console.WriteLine("Works as expected.");
-            }
+            var test = new Test();
+            var test1 = new Test();
+            Console.WriteLine(test.ErrorMessage + test1.ErrorMessage);
             NoF5Needed();
+        }
+        public static void PrintGraphTimePeriodUsingExtensionMethods()
+        {
+            GraphTimePeriod pastDay = GraphTimePeriod.PastDay;
+            GraphTimePeriod pastHour = GraphTimePeriod.PastHour;
+            GraphTimePeriod pastWeek = GraphTimePeriod.PastWeek;
+            GraphTimePeriod pastYear = GraphTimePeriod.PastYear;
+            Console.WriteLine(pastDay.StringRepresentation());
+            Console.WriteLine(pastHour.StringRepresentation());
+            Console.WriteLine(pastWeek.StringRepresentation());
+            Console.WriteLine(pastYear.StringRepresentation());
+        }
+        public static void PrintItemCatagoryUsingExtensionMethods()
+        {
+            ItemCatagory alchol = ItemCatagory.Alchol;
+            ItemCatagory chilled = ItemCatagory.Chilled;
+            ItemCatagory confectionary = ItemCatagory.Confectionery;
+            ItemCatagory  softDrink = ItemCatagory.SoftDrink;
+            Console.WriteLine(alchol.StringRepresentation());
+            Console.WriteLine(chilled.StringRepresentation());
+            Console.WriteLine(confectionary.StringRepresentation());
+            Console.WriteLine(softDrink.StringRepresentation());
         }
         public static void AddItemToDb(Item item, InventoryContext dbContext)
         {

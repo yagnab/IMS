@@ -39,70 +39,70 @@
     <Position X="1.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAAAAAI=</HashCode>
-      <FileName>Classes\NewAccountValidation.cs</FileName>
+      <FileName>Classes\NewAccount\NewAccountValidation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMS.BL.Validation.NewBarcodeValidation" Collapsed="true">
     <Position X="5.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAAAAAAAAAEAAACAAAAAAAAAAAACAAAAAAA=</HashCode>
-      <FileName>Classes\NewBarcodeValidation.cs</FileName>
+      <FileName>Classes\Barcode\NewBarcodeValidation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMS.BL.Validation.NewPasswordValidation" Collapsed="true">
     <Position X="3.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAACAAAAAAAAAAAAAAAAACEAgAAAAAAAAAAAAAAAAg=</HashCode>
-      <FileName>Classes\NewPasswordValidation.cs</FileName>
+      <FileName>Classes\NewAccount\NewPasswordValidation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMS.BL.Validation.NewUsernameValidation" Collapsed="true">
     <Position X="17" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAQAAAAAAAAgAAAAAA=</HashCode>
-      <FileName>Classes\NewUsernameValidation.cs</FileName>
+      <FileName>Classes\NewAccount\NewUsernameValidation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMS.BL.Validation.OldAccountValidation" Collapsed="true">
     <Position X="19.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAACAAAAgAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
-      <FileName>Classes\OldAccountValidation.cs</FileName>
+      <FileName>Classes\OldAccount\OldAccountValidation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMS.BL.Validation.OldBarcodeValidation" Collapsed="true">
     <Position X="5.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAACAAAAAgAAAAAAA=</HashCode>
-      <FileName>Classes\OldBarcodeValidation.cs</FileName>
+      <FileName>Classes\Barcode\OldBarcodeValidation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMS.BL.Validation.OldPasswordValidation" Collapsed="true">
     <Position X="8" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAQAAAgAAAAAAAAAAAA=</HashCode>
-      <FileName>Classes\OldPasswordValidation.cs</FileName>
+      <FileName>Classes\OldAccount\OldPasswordValidation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMS.BL.Validation.OldUsernameValidation" Collapsed="true">
     <Position X="12.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAACAAAAAEAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Classes\OldUsernameValidation.cs</FileName>
+      <FileName>Classes\OldAccount\OldUsernameValidation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMS.BL.Validation.QuantityValidation" Collapsed="true">
     <Position X="21.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAAAgAAAAAAAAEBAAAAAAAAAAAAAIAAAFAAAA=</HashCode>
-      <FileName>Classes\QuantityValidation.cs</FileName>
+      <HashCode>ASAAAAAAAAAAAAIEAAAAAAAEAAAAAAAAAAAIAAEAACA=</HashCode>
+      <FileName>Classes\StringToNumber\QuantityValidation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMS.BL.Validation.RRPValidation" Collapsed="true">
     <Position X="23.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAUIAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Classes\RRPValidation.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\StringToNumber\RRPValidation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMS.BL.Validation.StaffAccountValidation" Collapsed="true">
@@ -116,7 +116,7 @@
     <Position X="10.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAUAAAAAEAAAAAAAAAAAAAAAAAgAAA=</HashCode>
-      <FileName>Classes\StringToNumberValidation.cs</FileName>
+      <FileName>Classes\StringToNumber\StringToNumberValidation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMS.BL.Validation.StringValidation" Collapsed="true">

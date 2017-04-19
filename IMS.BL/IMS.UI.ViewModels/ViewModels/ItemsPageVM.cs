@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using IMS.BL.DataModel;
 using IMS.UI;
 using System.Data.Entity;
+using IMS.BL.Repositories;
 
 namespace IMS.UI.ViewModels
 {
@@ -31,8 +32,8 @@ namespace IMS.UI.ViewModels
         }
 
 
-        private List<ItemDeliveryDisplay> _currItemDeliveriesDisplays;
-        public List<ItemDeliveryDisplay> currItemDeliveriesDisplays
+        private List<CurrentItemDeliveryDisplay> _currItemDeliveriesDisplays;
+        public List<CurrentItemDeliveryDisplay> currItemDeliveriesDisplays
         {
             get
             {
@@ -87,14 +88,14 @@ namespace IMS.UI.ViewModels
             {
                 //selects new propety values
                 this.item = UIUtility.GetItemFromItemID(ItemID, dbContext);
-                currItemDeliveriesDisplays = CreateItemDeliveriesDisplays(this.item, dbContext);
+                currItemDeliveriesDisplays = CreateCurrentItemDeliveriesDisplays(this.item, dbContext);
                 currItemReservationsDisplays = CreateItemReservationsDisplays(this.item, dbContext);
             }
         }
         
-        List<ItemDeliveryDisplay> CreateItemDeliveriesDisplays(Item item, InventoryContext dbContext)
+        List<CurrentItemDeliveryDisplay> CreateCurrentItemDeliveriesDisplays(Item item, InventoryContext dbContext)
         {
-            List<ItemDeliveryDisplay> displays = new List<ItemDeliveryDisplay>();
+            List<CurrentItemDeliveryDisplay> displays = new List<CurrentItemDeliveryDisplay>();
 
             //Create new ItemDeliveryDisplay object foreach ItemDelivery
             //corrispoding to the passed item
@@ -103,7 +104,14 @@ namespace IMS.UI.ViewModels
                 //Only display current deliveries to user
                 if (!i_d.Delivery.IsArrived)
                 {
-                    displays.Add(UIUtility.CreateNewItemDeliveryDisplay(i_d, dbContext));
+                    //getting delivery for i_d
+                    using (var cdRepo = new CurrentDeliveriesRepo(new InventoryContext()))
+                    {
+                        var currDel = cdRepo.GetByID(i_d.DeliveryID);
+                        displays.Add(CurrentItemDeliveryDisplay.GetCurrentItemDeliveryDisplay(i_d, currDel , item));
+                        cdRepo.Complete();
+                    }
+                        
                 }
             }
 

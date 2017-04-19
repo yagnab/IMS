@@ -84,6 +84,7 @@
     <Compile Include="ViewModels\TillModeViewVM.cs" />
     <Compile Include="ViewModels\UIUtility.cs" />
     <Compile Include="ViewModels\ViewCurrentDeliveriesPageVM.cs" />
+    <Compile Include="ViewModels\ViewCurrentDeliveriesVVM.cs" />
     <Compile Include="ViewModels\ViewPastDeliveriesVM.cs" />
     <Compile Include="ViewModels\ViewTablesPageVM.cs" />
     <Compile Include="ViewModels\ViewTransactionsPageVM.cs" />
@@ -126,6 +127,10 @@
     <ProjectReference Include="..\IMS.BL.DataModel\IMS.BL.DataModel.csproj">
       <Project>{da5db6fe-1e7a-449e-ab9b-162574d3f6de}</Project>
       <Name>IMS.BL.DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMS.BL.Repositories\IMS.BL.Repositories.csproj">
+      <Project>{51f4ebba-e625-429e-8908-591a2fedac91}</Project>
+      <Name>IMS.BL.Repositories</Name>
     </ProjectReference>
     <ProjectReference Include="..\IMS.BL.Validation\IMS.BL.Validation.csproj">
       <Project>{21c710df-f806-42d2-9edd-5f45fac916a0}</Project>

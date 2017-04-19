@@ -37,42 +37,7 @@ namespace IMS.BL.Validation
                 ErrorMessage += numberFieldName + " must be digits only.\n";
             }
         }
-        /// <summary>
-        /// Will try to convert string input to int?
-        /// If it fails it will return null and ErrorMessage
-        /// Will say why it failed
-        /// </summary>
-        /// <param name="integer"></param>
-        /// <returns></returns>
-        protected int? GetIntegerFromString(string integer)
-        {
-            bool nullOrWhiteSpace = StringValidation.IsStringNullOrWhiteSpace(integer);
-
-            if (nullOrWhiteSpace)
-            {
-                ErrorMessage += "Please enter a value";
-                return null;
-            }
-
-            return ConvertToInt(integer);
-
-        }
         
-        protected int? ConvertToInt(string integer)
-        {
-            try
-            {
-                return Convert.ToInt32(integer);
-            }
-            catch(Exception)
-            {
-                ErrorMessage += "Please enter an integer";
-                //String not in right format
-                return null;
-            }
-            
-
-        }
         /// <summary>
         /// Checks to see if string has
         /// Only digits

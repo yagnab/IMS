@@ -38,20 +38,41 @@ namespace IMS.UI.Views
         private void AddNewItemBtn_Click(object sender, RoutedEventArgs e)
         {
             string barcode = BarcodeTB.Text;
-            var newBV = new NewBarcodeValidation(barcode);
+            var oldBV = new OldBarcodeValidation(barcode);
 
-            //if validation passed
-            if(newBV.isNewBarcodeValid)
+            //old barcode is valid
+            if(oldBV.isOldBarcodeValid)
             {
-                MessageBox.Show("It worked");
+                //finding out if quantity is valid
+                string quantity = QuantityTB.Text;
+                Item item;
+                using (var iRepo = new ItemRepository(new InventoryContext()))
+                {
+                    item = iRepo.ItemByBarcode(barcode).First();
+                    iRepo.Complete();
+                }
+                var qV = new QuantityValidation(quantity, item);
+
+                //quantity is valid
+                if(qV.isQuantityValid)
+                {
+                    ErrorLbl.Content = "It worked";
+                }
+                else
+                {
+                    ErrorLbl.Content = qV.ErrorMessage;
+                }
+
+                //allowing reuse
+                qV.Complete();
             }
             else
             {
-                ErrorLbl.Content = newBV.ErrorMessage;
+                ErrorLbl.Content = oldBV.ErrorMessage;
             }
-
-            //allow for reuse of object
-            newBV.Complete();
+            
+            //allowing reuse
+            oldBV.Complete();
         }
 
         /// <summary>
@@ -77,32 +98,7 @@ namespace IMS.UI.Views
             BarcodeTB.Text = "";
             QuantityTB.Text = "";
         }
-        /// <summary>
-        /// Try to figure out total quantity needed
-        /// including items in till. If more needed than in stock
-        /// prompt to add new items. Else, try to create new row
-        /// </summary>
-        /// <param name="item"></param>
-        /// <param name="errorMessage"></param>
-        void ValidateQuantityInput(Item item, string errorMessage)
-        {
-            //Validate quantity
-            QuantityValidation qv = new QuantityValidation();
-
-            IEnumerable rows = ItemDisplayDatGrd.ItemsSource;
-
-            int? quantityInput = qv.ValidateQuantity(QuantityTB.Text, item, rows);
-
-            //Validation failed
-            if (quantityInput == null)
-            {
-                errorMessage += qv.ErrorMessage;
-                //AskToAddItemQuantity();
-            }
-
-            //Try to add new row
-            AddNewTillRow(quantityInput, item, errorMessage);
-        }
+        
         void AskToAddItemQuantity()
         {
 

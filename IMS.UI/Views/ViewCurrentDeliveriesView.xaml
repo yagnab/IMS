@@ -56,14 +56,14 @@
                                 Width="SizeToHeader"/>
                 </DataGrid.Columns>
             </DataGrid>
-        </ScrollViewer>
+        </ScrollViewer> 
 
         <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
             <!-- Display all CurrentDeliveries from database -->
             <ListBox  
                  x:Name="CurrentDeliveriesList" 
                  ItemsSource="{Binding CurrentDeliveries}" 
-                 SelectionChanged="ItemsLstBx_SelectionChanged">
+                 SelectionChanged="CurrentDeliveriesList_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

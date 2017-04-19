@@ -15,9 +15,11 @@ namespace IMS.BL.Validation
         }
         /// <summary>
         /// Call this after one validation operation done
-        /// Allow use of one object for multiple validation
+        /// Allow use of one object for multiple validation.
+        /// This method can be overridden for more complex child
+        /// Classes.
         /// </summary>
-        public void Complete()
+        public virtual void Complete()
         {
             ErrorMessage = "";
         }

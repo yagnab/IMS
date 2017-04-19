@@ -874,23 +874,6 @@ namespace IMS.UI
             }
         }
         /// <summary>
-        /// Will create ItemDeliveryDisplay 
-        /// for a given ItemDelivery object
-        /// </summary>
-        /// <param name="item"></param>
-        /// <param name="i_d"></param>
-        /// <param name="dbContext"></param>
-        /// <returns></returns>
-        public static ItemDeliveryDisplay CreateNewItemDeliveryDisplay(ItemDelivery i_d, InventoryContext dbContext)
-        {
-            DateTime expectedArrivalDate = dbContext.Deliveries.OfType<CurrentDelivery>()
-                .Where(d => d.DeliveryID == i_d.DeliveryID)
-                .Select(d => d.ExpectedArrivalDate)
-                .First();
-            return new ItemDeliveryDisplay(i_d.DeliveryID, expectedArrivalDate, i_d.Quantity);
-        }
-
-        /// <summary>
         /// Will create ItemReservationDisplay 
         /// for a given ItemReservation object
         /// </summary>

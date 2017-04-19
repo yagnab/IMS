@@ -51,29 +51,30 @@
   <ItemGroup>
     <Compile Include="Classes\AccountValidation.cs" />
     <Compile Include="Classes\AdminAccountValidation.cs" />
-    <Compile Include="Classes\NewAccountValidation.cs" />
-    <Compile Include="Classes\NewUsernameValidation.cs" />
-    <Compile Include="Classes\OldAccountValidation.cs" />
-    <Compile Include="Classes\OldBarcodeValidation.cs" />
+    <Compile Include="Classes\NewAccount\NewAccountValidation.cs" />
+    <Compile Include="Classes\NewAccount\NewUsernameValidation.cs" />
+    <Compile Include="Classes\NewItem\NewItemValidation.cs" />
+    <Compile Include="Classes\OldAccount\OldAccountValidation.cs" />
+    <Compile Include="Classes\Barcode\OldBarcodeValidation.cs" />
     <Compile Include="Classes\CatagoryValidation.cs" />
     <Compile Include="Classes\DescriptionValidation.cs" />
-    <Compile Include="Classes\StringToNumberValidation.cs" />
+    <Compile Include="Classes\StringToNumber\StringToNumberValidation.cs" />
     <Compile Include="Classes\ItemCatagoryValidation.cs" />
     <Compile Include="Classes\OldNewAccountValidation.cs" />
-    <Compile Include="Classes\NewBarcodeValidation.cs" />
-    <Compile Include="Classes\OldPasswordValidation.cs" />
-    <Compile Include="Classes\OldUsernameValidation.cs" />
+    <Compile Include="Classes\Barcode\NewBarcodeValidation.cs" />
+    <Compile Include="Classes\OldAccount\OldPasswordValidation.cs" />
+    <Compile Include="Classes\OldAccount\OldUsernameValidation.cs" />
     <Compile Include="Classes\ValidationBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Classes\QuantityValidation.cs" />
-    <Compile Include="Classes\RRPValidation.cs" />
+    <Compile Include="Classes\StringToNumber\QuantityValidation.cs" />
+    <Compile Include="Classes\StringToNumber\RRPValidation.cs" />
     <Compile Include="Classes\StaffAccountValidation.cs" />
-    <Compile Include="Classes\NewPasswordValidation.cs" />
+    <Compile Include="Classes\NewAccount\NewPasswordValidation.cs" />
     <Compile Include="Classes\PasswordValidation.cs" />
     <Compile Include="Classes\StringValidation.cs" />
     <Compile Include="Classes\UsernameValidation.cs" />
-    <Compile Include="StringToDecimalValidation.cs" />
-    <Compile Include="StringToIntegerValidation.cs" />
+    <Compile Include="Classes\StringToNumber\StringToDecimalValidation.cs" />
+    <Compile Include="Classes\StringToNumber\StringToIntegerValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -93,9 +94,7 @@
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

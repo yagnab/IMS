@@ -15,4 +15,25 @@ namespace IMS.BL.DataModel
         InputIsNullOrWhiteSpace,
         
     }
+    /*
+    public static class InvalidationTypeExtension
+    {
+        public static string StringRepresentation(this GraphTimePeriod timePeriod)
+        {
+            switch (timePeriod)
+            {
+                case GraphTimePeriod.PastDay:
+                    return "Past Day";
+                case GraphTimePeriod.PastHour:
+                    return "Past Hour";
+                case GraphTimePeriod.PastWeek:
+                    return "Past Week";
+                case GraphTimePeriod.PastYear:
+                    return "Past Year";
+                //some error occurs
+                default:
+                    return null;
+            }
+        }
+    }*/
 }

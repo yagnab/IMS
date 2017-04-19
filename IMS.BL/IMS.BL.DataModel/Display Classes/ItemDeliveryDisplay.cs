@@ -6,13 +6,37 @@ using System.Threading.Tasks;
 
 namespace IMS.BL.DataModel
 {
-    public class ItemDeliveryDisplay : DisplayBase
+    public class CurrentItemDeliveryDisplay : DisplayBase
     {
-        
-        public ItemDeliveryDisplay(int _DeliveryID, DateTime _ExpectedArrivalDate, int _Quantity)
-            :base(_DeliveryID, _ExpectedArrivalDate, _Quantity)
+        public int ItemID { get; private set; }
+        public string Barcode { get; private set; }
+        public string Description { get; private set; }
+        public int QuantityInStock { get; private set; }
+        public decimal RRP { get; private set; }
+        public CurrentItemDeliveryDisplay(int deliveryID, DateTime expectedArrivalDate, int quantity, 
+            int itemID, string barcode, string description, int quantityInStock, decimal rrp)
+            :base(deliveryID, expectedArrivalDate, quantity)
         {
-            
+            ItemID = itemID;
+            Barcode = barcode;
+            Description = description;
+            QuantityInStock = quantityInStock;
+            RRP = rrp;
+        }
+
+        /// <summary>
+        /// Requires an item delivery and 
+        /// Corrisponding CurrentDelivery and
+        /// Item
+        /// </summary>
+        /// <param name="itemDelivery"></param>
+        /// <param name="currentDelivery"></param>
+        public static CurrentItemDeliveryDisplay GetCurrentItemDeliveryDisplay(ItemDelivery itemDelivery, CurrentDelivery currentDelivery, Item item)
+        {
+            return new CurrentItemDeliveryDisplay(itemDelivery.DeliveryID, 
+                currentDelivery.ExpectedArrivalDate, itemDelivery.Quantity
+                , item.ItemID, item.Barcode, item.Description, 
+                item.QuantityStockLevel, item.RRP);
         }
     }
 }

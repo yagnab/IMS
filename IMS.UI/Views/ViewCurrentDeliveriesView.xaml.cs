@@ -24,5 +24,10 @@ namespace IMS.UI.Views
         {
             InitializeComponent();
         }
+
+        private void CurrentDeliveriesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
