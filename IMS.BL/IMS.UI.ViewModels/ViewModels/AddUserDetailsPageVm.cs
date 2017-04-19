@@ -10,6 +10,7 @@ using IMS.UI.Models;
 
 namespace IMS.UI.ViewModels
 {
+    /*
     public class AddUserDetailsPageVM : INotifyPropertyChanged
     {
         #region Properties
@@ -73,5 +74,5 @@ namespace IMS.UI.ViewModels
             }
         }
         #endregion
-    }
+    }*/
 }

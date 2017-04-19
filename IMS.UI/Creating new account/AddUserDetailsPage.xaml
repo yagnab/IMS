@@ -44,8 +44,7 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"/>
         <TextBox x:Name="UsernameTxt" 
-                 Text="{Binding Username, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                 Validation.ErrorTemplate="{x:Null}"
+                 Text="Username"
                  Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" 
                  GotFocus="UsernameTxt_GotFocus"/>
         
@@ -56,11 +55,11 @@
                  Text="Confirm Password" 
                  Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="7" 
                  GotFocus="ConfirmPasswordTxt_GotFocus"/>
-        
         <PasswordBox x:Name="ConfirmPasswordBox" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="7" Visibility="Hidden"/>
 
         <!-- Bottom of page controls -->
-        <TextBlock x:Name="ErrorTxt" Text="{Binding ElementName=UsernameTxt, Path=(Validation.Errors).CurrentItem.ErrorContent}" 
+        <TextBlock x:Name="ErrorTxt" 
+                   Text=""
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="9"/>

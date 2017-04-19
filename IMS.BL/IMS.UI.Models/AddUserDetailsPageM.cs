@@ -9,7 +9,7 @@ using IMS.BL.Validation;
 
 namespace IMS.UI.Models
 {
-    public class AddUserDetailsPageM : IDataErrorInfo, INotifyPropertyChanged
+ /*   public class AddUserDetailsPageM : IDataErrorInfo, INotifyPropertyChanged
     {
         #region Properties
         private string username;
@@ -154,5 +154,5 @@ namespace IMS.UI.Models
             }
         }
         #endregion
-    }
+    }*/
 }
