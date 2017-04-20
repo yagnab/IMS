@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IMS.BL.Repositories;
+using IMS.BL.DataModel;
 
 namespace IMS.BL.Validation
 {
@@ -13,6 +15,7 @@ namespace IMS.BL.Validation
         //it cant be known if password is in valid
         public bool? isOldPasswordValid { get; private set; }
         public bool isOldAccountValid { get; private set; }
+        public UserAccount account { get; private set; }
 
         public OldAccountValidation(string username, string password) : base()
         {
@@ -36,15 +39,28 @@ namespace IMS.BL.Validation
                 {
                     //if password is invalid with correct username
                     ErrorMessage += opV.ErrorMessage;
+                    isOldAccountValid = false;
                 }
                 else
                 {
                     //valid details
                     isOldAccountValid = true;
+                    using (var uaRepo = new UserAccountRepo(new InventoryContext()))
+                    {
+                        account = uaRepo.UserAccountByUsername(username).First();
+                        uaRepo.Complete();
+                    }
                 }
             }
-
-
+        }
+        /// <summary>
+        /// Must remove account to reuse
+        /// The object
+        /// </summary>
+        public override void Complete()
+        {
+            ErrorMessage = "";
+            account = null;
         }
     }
 }

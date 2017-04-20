@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using IMS.BL;
 using System.Runtime.CompilerServices;
-using IMS.UI.Models;
 
 namespace IMS.UI.ViewModels
 {

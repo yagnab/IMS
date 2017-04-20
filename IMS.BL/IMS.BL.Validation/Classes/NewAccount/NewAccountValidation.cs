@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IMS.BL.DataModel;
 
 namespace IMS.BL.Validation
 {
@@ -20,7 +21,7 @@ namespace IMS.BL.Validation
             isUsernameValid = newUV.isNewUsernameValid;
             arePasswordsValid = npV.arePasswordsValid;
 
-            if(isNewAccountValid && arePasswordsValid)
+            if(isUsernameValid && arePasswordsValid)
             {
                 isNewAccountValid = true;
             }

@@ -136,14 +136,6 @@
       <Project>{21c710df-f806-42d2-9edd-5f45fac916a0}</Project>
       <Name>IMS.BL.Validation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IMS.BL\IMS.BL.csproj">
-      <Project>{d4006657-b8db-427d-a1b4-d413b25e115d}</Project>
-      <Name>IMS.BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IMS.UI.Models\IMS.UI.Models.csproj">
-      <Project>{c08a09f1-c114-4cd3-bee4-7c2bdbe0c7c7}</Project>
-      <Name>IMS.UI.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

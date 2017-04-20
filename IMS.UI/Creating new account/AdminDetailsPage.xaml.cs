@@ -41,7 +41,19 @@ namespace IMS.UI
             //Get inputted details
             string username = usernameTxt.Text;
             string password = UserAccount.stringToHashString(passwordBox.Password);
+            var aV = new AdminValidation(username, password);
 
+            if(aV.isAccountAdmin)
+            {
+                //Allow admin to pick access levels
+                var ui = UICreatePage.CreateNewSetAccessPage();
+                CreateNewAccountService.Instance.Window.Content = ui;
+            }
+            else
+            {
+                errorBlock.Text = aV.ErrorMessage;
+            }
+            /*
             //Validate if details match existing admin account
             using(var dbContext = new InventoryContext())
             {
@@ -59,7 +71,7 @@ namespace IMS.UI
                     var ui = UICreatePage.CreateNewSetAccessPage();
                     CreateNewAccountService.Instance.Window.Content = ui;
                 }
-            }
+            }*/
         }
     }
 }
