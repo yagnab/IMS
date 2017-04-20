@@ -202,16 +202,9 @@ namespace IMS.UI
 
         #region CurrentDelivery page utility
 
-        public static CurrentDeliveriesPage GetCurrentDeliveryPage()
+        public static ViewCurrentDeliveriesPage GetCurrentDeliveryPage()
         {
-            var ui = new CurrentDeliveriesPage();
-
-            //If user isnt allowed to add deliveries
-            if(!LoginService.Instance.currentUser.IsAdmin && !LoginService.Instance.currentUser.IsAddDeliveryAllowed)
-            {
-                ui.AddDelBtn.Visibility = Visibility.Hidden;
-            }
-
+            var ui = new ViewCurrentDeliveriesPage();
             return ui;
         }
 

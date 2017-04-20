@@ -1,9 +1,9 @@
-﻿<Page x:Class="IMS.UI.Pages.ViewCurrentDeliveriesPage"
+﻿<Page x:Class="IMS.UI.ViewCurrentDeliveriesPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:IMS.UI.Pages"
+      xmlns:local="clr-namespace:IMS.UI."
       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
       xmlns:views="clr-namespace:IMS.UI.Views"
       mc:Ignorable="d" 
@@ -12,12 +12,12 @@
 
     <Grid>
         <controls:MetroAnimatedTabControl>
-            <TabItem x:Name="TillMode" 
-                     Header="Till mode">
-                <views:TillModeView/>
+            <TabItem x:Name="CurrentDeliveriesTab" 
+                     Header="Current deliveries">
+                <views:ViewCurrentDeliveriesView/>
             </TabItem>
-            <TabItem x:Name="NewItemTab" 
-                     Header="Create new item">
+            <TabItem x:Name="NewCurrentDeliveryTab" 
+                     Header="Create new current delivery">
                 <views:CreateNewItemView/>
             </TabItem>
         </controls:MetroAnimatedTabControl>

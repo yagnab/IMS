@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using IMS.BL.DataModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using IMS.BL.Repositories;
 
-namespace IMS.UI.ViewModels.ViewModels
+namespace IMS.UI.ViewModels
 {
-    class ViewCurrentDeliveriesVVM
+    public class ViewCurrentDeliveriesVVM
     {
         public List<CurrentDelivery> CurrentDeliveries { get; private set; }
 
@@ -27,16 +28,16 @@ namespace IMS.UI.ViewModels.ViewModels
             }
         }
 
-        List<ItemDelivery> _CurrentItemsDeliveries;
-        public List<ItemDelivery> CurrentItemsDeliveries
+        List<CurrentItemDeliveryDisplay> _CurrentItemDeliveryDisplays;
+        public List<CurrentItemDeliveryDisplay> CurrentItemDeliveryDisplays
         {
             get
             {
-                return _CurrentItemsDeliveries;
+                return _CurrentItemDeliveryDisplays;
             }
             set
             {
-                _CurrentItemsDeliveries = value;
+                _CurrentItemDeliveryDisplays = value;
                 OnPropertyChanged();
             }
         }
@@ -51,5 +52,28 @@ namespace IMS.UI.ViewModels.ViewModels
             }
         }
         #endregion
+
+        public ViewCurrentDeliveriesVVM()
+        {
+            using (var cdRepo = new CurrentDeliveriesRepo(new InventoryContext()))
+            {
+                CurrentDeliveries = cdRepo.GetAll().ToList();
+                cdRepo.Complete();
+            }
+        }
+        public void SelectionChanged(CurrentDelivery newCurrentDelivery)
+        {
+            CurrentDelivery = newCurrentDelivery;
+            CurrentItemDeliveryDisplays = GetCurrentItemDeliveryDisplays();
+        }
+        List<CurrentItemDeliveryDisplay> GetCurrentItemDeliveryDisplays()
+        {
+            List<CurrentItemDeliveryDisplay> temp = new List<CurrentItemDeliveryDisplay>();
+            foreach(ItemDelivery i_d in CurrentDelivery.ItemDeliveries)
+            {
+                var newCIDDisplay = CurrentItemDeliveryDisplay.GetCurrentItemDeliveryDisplay(i_d, CurrentDelivery, i_d.Item);
+            }
+            return temp;
+        }
     }
 }

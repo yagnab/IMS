@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IMS.UI.Pages
+namespace IMS.UI
 {
     /// <summary>
     /// Interaction logic for ViewCurrentDeliveriesPage.xaml

@@ -32,12 +32,11 @@
             <!-- Show all Items for current delivery-->
             <DataGrid 
                 AutoGenerateColumns="False"
-                x:Name="ItemsDatGrid" 
-                DataContext="CurrentItemDeliveries"
-                ItemsSource="{Binding Items}">
+                x:Name="ItemDeliveriesDatGrid" 
+                ItemsSource="{Binding CurrentItemDeliveries}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ItemID"
-                                Binding="{Binding Item.ItemID}"
+                                Binding="{Binding ItemDelivery.ItemID}"
                                 Width="SizeToHeader"/>
                     <DataGridTextColumn Header="Barcode"
                                 Binding="{Binding Item.Barcode}"
@@ -76,5 +75,9 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </ScrollViewer>
+
+        <Button x:Name="addDeliveryButton"
+            Grid.Row="1" Grid.Column="0" 
+            Content="Add delivery"/>
     </Grid>
 </UserControl>

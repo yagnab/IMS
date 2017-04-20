@@ -23,7 +23,7 @@ namespace IMS.BL.Validation
             doesBarcodeExist = DoesBarcodeExist(barcode);
 
             //setting isOldBarcodeValid
-            if(!doesBarcodeExist && isStringValid)
+            if(doesBarcodeExist && isStringValid)
             {
                 isOldBarcodeValid = true;
             }

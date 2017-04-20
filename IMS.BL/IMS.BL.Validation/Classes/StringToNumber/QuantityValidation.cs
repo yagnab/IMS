@@ -31,6 +31,10 @@ namespace IMS.BL.Validation
                 {
                     isQuantityValid = true;
                 }
+                else
+                {
+                    isQuantityValid = false;
+                }
 
                 //building error message
                 if(!(bool)isQuantityInRange)

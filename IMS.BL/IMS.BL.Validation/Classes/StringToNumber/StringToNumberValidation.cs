@@ -51,9 +51,9 @@ namespace IMS.BL.Validation
             //if illegal characters found
             if (! rex.IsMatch(number))
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
     }
 }

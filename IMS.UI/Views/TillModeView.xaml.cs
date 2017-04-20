@@ -41,7 +41,7 @@ namespace IMS.UI.Views
             var oldBV = new OldBarcodeValidation(barcode);
 
             //old barcode is valid
-            if(oldBV.isOldBarcodeValid)
+            if (oldBV.isOldBarcodeValid)
             {
                 //finding out if quantity is valid
                 string quantity = QuantityTB.Text;
@@ -54,9 +54,10 @@ namespace IMS.UI.Views
                 var qV = new QuantityValidation(quantity, item);
 
                 //quantity is valid
-                if(qV.isQuantityValid)
+                if (qV.isQuantityValid)
                 {
-                    ErrorLbl.Content = "It worked";
+                    ErrorLbl.Content = "It worked!";
+                    ErrorLbl.Content += " Implement it now";
                 }
                 else
                 {
@@ -70,7 +71,7 @@ namespace IMS.UI.Views
             {
                 ErrorLbl.Content = oldBV.ErrorMessage;
             }
-            
+
             //allowing reuse
             oldBV.Complete();
         }

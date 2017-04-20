@@ -16,21 +16,24 @@ using System.Text.RegularExpressions;
 
 namespace IMS.BL.Testbed
 {
-    public class Test
-    {
-        public string ErrorMessage { get; private set; }
-        public Test()
-        {
-        }
-    }
     class Program
     {
         static void Main(string[] args)
         {
-            var test = new Test();
-            var test1 = new Test();
-            Console.WriteLine(test.ErrorMessage + test1.ErrorMessage);
+            TestGetAllCurrentDeliveries();
             NoF5Needed();
+        }
+        public static void TestGetAllCurrentDeliveries()
+        {
+            IEnumerable<CurrentDelivery> allCDs;
+            using (var cdRepo = new CurrentDeliveriesRepo(new InventoryContext()))
+            {
+                allCDs = cdRepo.GetAll();
+            }
+            foreach(CurrentDelivery cd in allCDs)
+            {
+                Console.WriteLine(cd.DeliveryID.ToString() + " " + cd.ExpectedArrivalDate);
+            }
         }
         public static void PrintGraphTimePeriodUsingExtensionMethods()
         {

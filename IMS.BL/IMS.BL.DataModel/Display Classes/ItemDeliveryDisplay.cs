@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IMS.BL.DataModel
 {
@@ -13,15 +9,19 @@ namespace IMS.BL.DataModel
         public string Description { get; private set; }
         public int QuantityInStock { get; private set; }
         public decimal RRP { get; private set; }
-        public CurrentItemDeliveryDisplay(int deliveryID, DateTime expectedArrivalDate, int quantity, 
+        public int QuantityInDelivery { get; private set; }
+        public CurrentItemDeliveryDisplay(int deliveryID, DateTime expectedArrivalDate, int quantityInDelivery, 
             int itemID, string barcode, string description, int quantityInStock, decimal rrp)
-            :base(deliveryID, expectedArrivalDate, quantity)
+            :base(deliveryID, expectedArrivalDate, quantityInDelivery)
         {
+            //item related attributes
             ItemID = itemID;
             Barcode = barcode;
             Description = description;
             QuantityInStock = quantityInStock;
             RRP = rrp;
+
+            //delivery related attribute defined in base class
         }
 
         /// <summary>
