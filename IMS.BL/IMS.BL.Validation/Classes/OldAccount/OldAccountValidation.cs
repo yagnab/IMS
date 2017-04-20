@@ -16,7 +16,11 @@ namespace IMS.BL.Validation
         public bool? isOldPasswordValid { get; private set; }
         public bool isOldAccountValid { get; private set; }
         public UserAccount account { get; private set; }
-
+        /// <summary>
+        /// Arguement "password" needs to be hashed
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
         public OldAccountValidation(string username, string password) : base()
         {
             var ouV = new OldUsernameValidation(username);

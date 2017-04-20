@@ -76,6 +76,10 @@ namespace IMS.UI
                 var ui = UICreatePage.GetAdminDetailsPage();
                 CreateNewAccountService.Instance.Window.Content = ui;
             }
+            else
+            {
+                ErrorTxt.Text = naV.ErrorMessage;
+            }
             /*
             string errorMessage = ValidateInputs(username, password, confirmPassword);
 

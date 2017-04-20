@@ -17,7 +17,7 @@ namespace IMS.BL.Validation
             doesUsernameExist = DoesUsernameExist(username);
 
             //setting isOldUsernameValid
-            if(!doesUsernameExist && isStringValid)
+            if(doesUsernameExist && isStringValid)
             {
                 isOldUsernameValid = true;
             }
@@ -27,9 +27,9 @@ namespace IMS.BL.Validation
             }
 
             //building error message
-            if(doesUsernameExist)
+            if(!doesUsernameExist)
             {
-                ErrorMessage += "That " + usernameFieldName  +  " already exists.\n";
+                ErrorMessage += "That " + usernameFieldName  +  " doesn't exists.\n";
             }
         }
 

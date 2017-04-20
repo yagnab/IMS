@@ -13,11 +13,13 @@ namespace IMS.BL.Validation
         public bool isPasswordValid { get; private set; }
         //this refernces second arguement in constructor named "confirmPassword"
         public bool isConfirmPasswordValid { get; private set; }
+        public bool isPasswordLengthOk { get; private set; }
         public bool arePasswordsValid { get; private set; }
         /// <summary>
         /// This class not inherit StringValidation 
         /// As there are two string to validate
-        /// But it still inherits ValidationBase
+        /// But it still inherits ValidationBase.
+        /// This will not check hashed password.
         /// </summary>
         /// <param name="password"></param>
         /// <param name="confirmPassword"></param>
@@ -29,9 +31,10 @@ namespace IMS.BL.Validation
             doPasswordsMatch = DoPasswordsMatch(password, confirmPassword);
             isPasswordValid = IsPasswordValid(password, passwordFieldName);
             isConfirmPasswordValid = IsPasswordValid(confirmPassword, confirmPasswordFieldName);
+            isPasswordLengthOk = IsPasswordLengthOk(password);
 
             //setting arePasswordsValid
-            if(doPasswordsMatch && isPasswordValid && isConfirmPasswordValid)
+            if (doPasswordsMatch && isPasswordValid && isConfirmPasswordValid && isPasswordLengthOk)
             {
                 arePasswordsValid = true;
             }
@@ -44,6 +47,10 @@ namespace IMS.BL.Validation
             if(!doPasswordsMatch)
             {
                 ErrorMessage += passwordFieldName + " and " + confirmPasswordFieldName + " do not match.\n";
+            }
+            if(!isPasswordLengthOk)
+            {
+                ErrorMessage += passwordFieldName + " length must be greater than 7 and less than 101";
             }
             //no need to build error message for isPasswordValid && isConfirmPasswordValid
             //as the IsPasswordValid method already does that
@@ -81,6 +88,18 @@ namespace IMS.BL.Validation
                 //allow reuse
                 stringV.Complete();
                 ErrorMessage += stringV.ErrorMessage;
+                return false;
+            }
+        }
+
+        bool IsPasswordLengthOk(string password)
+        {
+            if(password.Length > 7 && password.Length < 101)
+            {
+                return true;
+            }
+            else
+            {
                 return false;
             }
         }

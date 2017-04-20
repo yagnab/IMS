@@ -27,11 +27,6 @@ namespace IMS.BL.Validation
                 if(account.IsAdmin)
                 {
                     isAccountAdmin = true;
-                    using (var aaRepo = new AdminAccountsRepo(new InventoryContext()))
-                    {
-                        adminAccount = aaRepo.AdminAccountByUsername(username).First();
-                        aaRepo.Complete();
-                    }
                 }
                 else
                 {

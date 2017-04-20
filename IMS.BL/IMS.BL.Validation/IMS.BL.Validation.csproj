@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Classes\AccountValidation.cs" />
     <Compile Include="Classes\AdminAccountValidation.cs" />
+    <Compile Include="Classes\OldAccount\AdminValidation.cs" />
     <Compile Include="Classes\NewAccount\NewAccountValidation.cs" />
     <Compile Include="Classes\NewAccount\NewUsernameValidation.cs" />
     <Compile Include="Classes\NewItem\NewItemValidation.cs" />

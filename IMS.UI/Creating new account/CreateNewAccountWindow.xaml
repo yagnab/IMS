@@ -6,7 +6,7 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:IMS.UI"
         mc:Ignorable="d"
-        Title="CreateNewAccountWindow" Height="330" Width="300"
+        Title="CreateNewAccountWindow" Height="370" Width="350"
         ResizeMode="NoResize"
         GlowBrush="{DynamicResource AccentColorBrush}"
         Closing="MetroWindow_Closing">
