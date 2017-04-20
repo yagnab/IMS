@@ -20,8 +20,131 @@ namespace IMS.BL.Testbed
     {
         static void Main(string[] args)
         {
-            TestGetAllCurrentDeliveries();
-            NoF5Needed();
+            /*
+            IEnumerable<Item> allItems;
+            using (var iRepo = new ItemRepository(new InventoryContext()))
+            {
+                allItems = iRepo.GetAll();
+            }
+
+            Dictionary<Item, int> itemToQuantity = new Dictionary<Item, int>();
+            foreach (Item item in allItems)
+            {
+                itemToQuantity.Add(item, 1);
+            }
+            
+            using (var tRepo = new TransactionRepo(new InventoryContext()))
+            {
+                tRepo.AddNewTransaction(itemToQuantity);
+                tRepo.Complete();
+            }*/
+
+            /*
+            DateTime dt = new DateTime(2017, 04, 20, 20, 24, 17);
+            Transaction transaction;
+            using (var dbContext = new InventoryContext())
+            {
+                transaction = dbContext.Set<Transaction>().Where(t => t.TimeOfTransaction == dt).First();
+            }*/
+
+            Item firstItem;
+            CurrentDelivery firstCurrDel;
+            using (var irepo = new ItemRepository(new InventoryContext()))
+            {
+                firstItem = irepo.GetByID(1);
+                irepo.Complete();
+            }
+            using (var dRepo = new CurrentDeliveriesRepo(new InventoryContext()))
+            {
+                firstCurrDel = dRepo.GetByID(9);
+                dRepo.Complete();
+            }
+
+            /*
+            using (var idRepo = new ItemDeliveriesRepo(new InventoryContext()))
+            {
+                var newID = new ItemDelivery()
+                {
+                    Item = firstItem,
+                    Delivery = firstCurrDel
+                };
+                idRepo.Add(newID);
+                idRepo.Complete();
+            }*/
+
+            using (var dbContext = new InventoryContext())
+            {
+                var newID = new ItemDelivery()
+                {
+                    Item = firstItem,
+                    ItemID = firstItem.ItemID,
+                    Delivery = firstCurrDel,
+                    DeliveryID = firstCurrDel.DeliveryID,
+                    Quantity = 1
+                };
+                dbContext.ItemDeliveries.Add(newID);
+                dbContext.SaveChanges();
+            }
+
+                NoF5Needed();
+        }
+        public static void TestAddNewCurrentDelivery(DateTime expectedArrivalDate)
+        {
+            //getting all items
+            IEnumerable<Item> allItems;
+            using (var iRepo = new ItemRepository(new InventoryContext()))
+            {
+                allItems = iRepo.GetAll();
+            }
+
+            //getting vars
+            
+            //getting dict
+            var itemsToQuantity = new Dictionary<Item, int>();
+            foreach(Item item in allItems.Take(1))
+            {
+                itemsToQuantity.Add(item, 1);
+            }
+            //getting supplier
+            Supplier supplier;
+            using (var sRepo = new SupplierRepo(new InventoryContext()))
+            {
+                supplier = sRepo.GetByID(1);
+                sRepo.Complete();
+            }
+
+            //adding new cd
+            using (var cdRepo = new CurrentDeliveriesRepo(new InventoryContext()))
+            {
+                cdRepo.AddNewCurrentDelivery(itemsToQuantity, expectedArrivalDate, supplier);
+                cdRepo.Complete();
+            }
+        }
+        public static void CreateNewDelivery(DateTime expectedArrivalDate)
+        {
+            //vars needed
+            Supplier supplier;
+
+            //getting supplier
+            using (var sRepo = new SupplierRepo(new InventoryContext()))
+            {
+                supplier = sRepo.GetByID(1);
+            }
+
+            //creating new delivery
+            var NewCurrentDelivery = new CurrentDelivery()
+            {
+                Supplier = supplier,
+                IsArrived = false,
+                ExpectedArrivalDate = expectedArrivalDate
+            };
+
+            using (var cdRepo = new CurrentDeliveriesRepo(new InventoryContext()))
+            {
+                cdRepo.Add(NewCurrentDelivery);
+                cdRepo.Complete();
+            }
+
         }
         public static void TestGetAllCurrentDeliveries()
         {
@@ -57,12 +180,12 @@ namespace IMS.BL.Testbed
             Console.WriteLine(confectionary.StringRepresentation());
             Console.WriteLine(softDrink.StringRepresentation());
         }
-        public static void AddItemToDb(Item item, InventoryContext dbContext)
+        public static void AddItemToDbTest(Item item)
         {
-            using(dbContext)
+            using(var iRepo = new ItemRepository(new InventoryContext()))
             {
-                dbContext.Items.Add(item);
-                dbContext.SaveChanges();
+                iRepo.Add(item);
+                iRepo.Complete();
             }
         }
         public static bool test(Func<int, bool> func, int number)

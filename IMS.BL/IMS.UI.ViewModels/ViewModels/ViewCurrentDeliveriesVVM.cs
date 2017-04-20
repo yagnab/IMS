@@ -60,6 +60,9 @@ namespace IMS.UI.ViewModels
                 CurrentDeliveries = cdRepo.GetAll().ToList();
                 cdRepo.Complete();
             }
+            //sets a default current delivery to display on loadup
+            //also sets default currentDeliveryDisplay
+            SelectionChanged(CurrentDeliveries[0]);
         }
         public void SelectionChanged(CurrentDelivery newCurrentDelivery)
         {

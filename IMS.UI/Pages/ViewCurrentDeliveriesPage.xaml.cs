@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Controls;
+using IMS.BL.DataModel;
+using IMS.UI.ViewModels;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace IMS.UI
 {
@@ -20,9 +10,35 @@ namespace IMS.UI
     /// </summary>
     public partial class ViewCurrentDeliveriesPage : Page
     {
+        ViewCurrentDeliveriesVVM dataContext;
         public ViewCurrentDeliveriesPage()
         {
             InitializeComponent();
+
+            //check if user has permission to add deliveries
+            if (!LoginService.Instance.currentUser.IsAddDeliveryAllowed)
+            {
+                addDeliveryButton.Visibility = Visibility.Hidden;
+            }
+
+            //setting DataContext
+            dataContext = new ViewCurrentDeliveriesVVM();
+            DataContext = dataContext;
+        }
+
+        private void CurrentDeliveriesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CurrentDelivery selectedDelivery = (CurrentDeliveriesList.SelectedItem as CurrentDelivery);
+            dataContext.SelectionChanged(selectedDelivery);
+            RefreshControls();
+        }
+        /// <summary>
+        /// Will force controls to rerender
+        /// Thus changes are shown to user
+        /// </summary>
+        void RefreshControls()
+        {
+            ItemDeliveriesDatGrid.UpdateLayout();
         }
     }
 }

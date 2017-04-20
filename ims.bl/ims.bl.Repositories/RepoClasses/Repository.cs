@@ -33,7 +33,7 @@ namespace IMS.BL.Repositories
             return Context.Set<TEntity>().Where(predicate).ToList();
         }
 
-        public void Add(TEntity entity)
+        virtual public void Add(TEntity entity)
         {
             Context.Set<TEntity>().Add(entity);
         }

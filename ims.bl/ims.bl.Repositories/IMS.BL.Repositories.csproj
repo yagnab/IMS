@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -51,8 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IAdminAccounts.cs" />
-    <Compile Include="Interfaces\ICurrentDeliveries.cs" />
+    <Compile Include="Interfaces\ICurrentDeliveriesRepo.cs" />
     <Compile Include="Interfaces\ICurrentReservationsRepo.cs" />
+    <Compile Include="Interfaces\IDeliveryRepo.cs" />
     <Compile Include="Interfaces\IItemDeliveriesRepo.cs" />
     <Compile Include="Interfaces\IItemsRepository.cs" />
     <Compile Include="Interfaces\IItemReservationsRepo.cs" />
@@ -61,12 +63,15 @@
     <Compile Include="Interfaces\IPastReservations.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IStaffAccounts.cs" />
+    <Compile Include="Interfaces\ISupplierRepo.cs" />
+    <Compile Include="Interfaces\ITransactionRepo.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Interfaces\IUserAccountRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepoClasses\AdminAccountsRepo.cs" />
     <Compile Include="RepoClasses\CurrentDeliveriesRepo.cs" />
     <Compile Include="RepoClasses\CurrentReservationsRepo.cs" />
+    <Compile Include="RepoClasses\DeliveryRepo.cs" />
     <Compile Include="RepoClasses\ItemDeliveriesRepo.cs" />
     <Compile Include="RepoClasses\ItemRepository.cs" />
     <Compile Include="RepoClasses\ItemReservationsRepo.cs" />
@@ -75,6 +80,8 @@
     <Compile Include="RepoClasses\PastReservationsRepo.cs" />
     <Compile Include="RepoClasses\Repository.cs" />
     <Compile Include="RepoClasses\StaffAccountsRepo.cs" />
+    <Compile Include="RepoClasses\SupplierRepo.cs" />
+    <Compile Include="RepoClasses\TransactionRepo.cs" />
     <Compile Include="RepoClasses\UnitOfWork.cs" />
     <Compile Include="RepoClasses\UserAccountRepo.cs" />
   </ItemGroup>

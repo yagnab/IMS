@@ -3,18 +3,91 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:IMS.UI."
+      xmlns:local="clr-namespace:IMS.UI"
       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
       xmlns:views="clr-namespace:IMS.UI.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="500" d:DesignWidth="600"
       Title="ViewCurrentDeliveriesPage">
 
     <Grid>
         <controls:MetroAnimatedTabControl>
             <TabItem x:Name="CurrentDeliveriesTab" 
                      Header="Current deliveries">
-                <views:ViewCurrentDeliveriesView/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="250"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!--Labels to display current deliveries attributes-->
+                    <StackPanel Grid.Column="0" Grid.Row="0" DataContext="CurrentDelivery">
+                        <Label Content="DeliveryID"/>
+                        <Label Content="{Binding DeliveryID}" Height="30"/>
+                        <Label Content="ExpectedArrivalDate" />
+                        <Label Content="{Binding ExpectedArrivalDate}" Height="30"/>
+                    </StackPanel>
+
+                    <ScrollViewer Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="3">
+                        <!-- Show all Items for current delivery-->
+                        <DataGrid 
+                AutoGenerateColumns="False"
+                x:Name="ItemDeliveriesDatGrid" 
+                ItemsSource="{Binding CurrentItemDeliveries}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ItemID"
+                                Binding="{Binding ItemDelivery.ItemID}"
+                                Width="SizeToHeader"/>
+                                <DataGridTextColumn Header="Barcode"
+                                Binding="{Binding Item.Barcode}"
+                                Width="SizeToHeader"/>
+                                <DataGridTextColumn Header="Description"
+                                Binding="{Binding Item.Description}"
+                                Width="SizeToHeader"/>
+                                <DataGridTextColumn Header="Quantity in stock"
+                                Binding="{Binding Item.QuantityStockLevel}"
+                                Width="SizeToHeader"/>
+                                <DataGridTextColumn Header="RRP"
+                                Binding="{Binding Item.RRP}"
+                                Width="SizeToHeader"/>
+                                <DataGridTextColumn Header="Quantity"
+                                Binding="{Binding Quantity}"
+                                Width="SizeToHeader"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+
+                    <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+                        <!-- Display all CurrentDeliveries from database -->
+                        <ListBox  
+                 x:Name="CurrentDeliveriesList" 
+                 ItemsSource="{Binding CurrentDeliveries}" 
+                 SelectionChanged="CurrentDeliveriesList_SelectionChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label>ID:</Label>
+                                        <Label Content="{Binding DeliveryID}"/>
+                                        <Label>Expected date:</Label>
+                                        <Label Content="{Binding ExpectedArrivalDate}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollViewer>
+
+                    <Button x:Name="addDeliveryButton"
+            Grid.Row="1" Grid.Column="0" 
+            Content="Add delivery"/>
+                </Grid>
             </TabItem>
             <TabItem x:Name="NewCurrentDeliveryTab" 
                      Header="Create new current delivery">
