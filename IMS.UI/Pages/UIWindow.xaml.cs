@@ -27,7 +27,7 @@ namespace IMS.UI
 
             
         }
-
+        
         private void MainMenuBtn_Click(object sender, RoutedEventArgs e)
         {
             LoginService.Instance.currentUIWindow.pageHolder.Content = 
@@ -36,6 +36,7 @@ namespace IMS.UI
 
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
         {
+            
             var ui = new LoginWindow();
             ui.Show();
             LoginService.Instance.currentUIWindow.Close();

@@ -16,7 +16,7 @@
         <TextBox x:Name="usernameTxt" HorizontalAlignment="Left" Height="23" Margin="84,75,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="120" GotFocus="usernameTxt_GotFocus"/>
         <TextBox x:Name="passwordTxt" HorizontalAlignment="Left" Height="23" Margin="84,128,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120" GotFocus="passwordTxt_GotFocus"/>
         <TextBlock x:Name="loginTxtBlk" HorizontalAlignment="Left" Margin="124,32,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top"/>
-        <Button x:Name="newAccountBtn" Content="New account" HorizontalAlignment="Left" Margin="44,206,0,0" VerticalAlignment="Top" Width="75" Click="newAccountBtn_Click"/>
+        <Button x:Name="newAccountBtn" Content="New account" HorizontalAlignment="Left" Margin="44,206,0,0" VerticalAlignment="Top" Width="87" Click="newAccountBtn_Click"/>
         <Button x:Name="loginBtn" Content="Login" HorizontalAlignment="Left" Margin="184,206,0,0" VerticalAlignment="Top" Width="75" Click="loginBtn_Click"/>
         <TextBlock x:Name="errorBlock" HorizontalAlignment="Left" Margin="44,169,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="-0.835,0.554" Width="215"/>
 

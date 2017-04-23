@@ -69,7 +69,7 @@ namespace IMS.UI
             }
         }
         #endregion
-
+        
         #region UIWindow utility
         public static UIWindow GetUIWindow(dynamic user)
         {
@@ -85,6 +85,7 @@ namespace IMS.UI
 
         #region UserMenu utility
         //gets getsermenu but removes buttons depending on permission
+        
         public static UserMenu GetUserMenu(dynamic user)
         {
             
@@ -94,7 +95,7 @@ namespace IMS.UI
 
                 Dictionary<Button, bool> buttonToIsEnabled = new Dictionary<Button, bool>();
                 buttonToIsEnabled.Add(ui.viewTransactionsBtn, user.IsAnalyticsAllowed);
-                buttonToIsEnabled.Add(ui.editTblsBtn, user.IsEditTablesAllowed);
+                //buttonToIsEnabled.Add(ui.editTblsBtn, user.IsEditTablesAllowed);
                 buttonToIsEnabled.Add(ui.analyticsBtn, user.IsAnalyticsAllowed);
 
                 foreach(KeyValuePair<Button, bool> row in buttonToIsEnabled)

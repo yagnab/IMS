@@ -10,15 +10,9 @@
 
       <Grid>
         <Button x:Name="lowStockBtn" Content="Low Stock" HorizontalAlignment="Left" Margin="41,141,0,0" VerticalAlignment="Top" Width="75" Click="lowStockBtn_Click"/>
-        <Button x:Name="viewTblsBtn" Content="View Tables" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="43,273,0,0" Click="viewTblsBtn_Click"/>
-        <Button x:Name="editTblsBtn" Content="Edit Table's" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="135,278,0,0"/>
         <Button x:Name="tillModeBtn" Content="Till Mode" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="302,141,0,0" Click="tillModeBtn_Click"/>
-        <Button x:Name="analyticsBtn" Content="Analytics" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="560,273,0,0" Click="analyticsBtn_Click"/>
-        <Button x:Name="currentReservBtn" Content="Reservations" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="302,273,0,0"/>
-        <Button x:Name="settingsBtn" Content="Account Settings" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="570,141,0,0"/>
-        <Button x:Name="viewCurrDelBtn" Content="Current Deliveries" HorizontalAlignment="Left" Margin="798,278,0,0" VerticalAlignment="Top" Width="75" Click="viewCurrDelBtn_Click"/>
-        <Button x:Name="viewPastDelBtn" Content="Past Deliveries" HorizontalAlignment="Left" Margin="878,278,0,0" VerticalAlignment="Top" Width="75" Click="viewPastDelBtn_Click"/>
-        <Button x:Name="viewTransactionsBtn" Content="Transactions" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="425,141,0,0" Click="viewTransactionsBtn_Click"/>
-        <Button x:Name="viewItemsBtn" Content="Items"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="425,278,0,0" Click="viewItemsBtn_Click"/>
+        <Button x:Name="analyticsBtn" Content="Analytics" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="302,264,0,0" Click="analyticsBtn_Click"/>
+        <Button x:Name="viewTransactionsBtn" Content="Transactions" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="550,141,0,0" Click="viewTransactionsBtn_Click"/>
+        <Button x:Name="viewItemsBtn" Content="Items"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="41,255,0,0" Click="viewItemsBtn_Click"/>
     </Grid>
 </Page>

@@ -13,6 +13,7 @@ using IMS.UI.ViewModels;
 using System.Data.Objects;
 using IMS.BL.Repositories;
 using System.Text.RegularExpressions;
+using IMS.BL.Validation;
 
 namespace IMS.BL.Testbed
 {
@@ -20,73 +21,23 @@ namespace IMS.BL.Testbed
     {
         static void Main(string[] args)
         {
-            /*
-            IEnumerable<Item> allItems;
-            using (var iRepo = new ItemRepository(new InventoryContext()))
+            TestBoundryConditionsOfDescriptionLength();
+            NoF5Needed();
+        }
+        public static void TestBoundryConditionsOfDescriptionLength()
+        {
+            string descriptionLower = "aaaa";
+            string descriptionUpper = "";
+            for(int x=0; x<301; x++)
             {
-                allItems = iRepo.GetAll();
+                descriptionUpper += "a";
             }
 
-            Dictionary<Item, int> itemToQuantity = new Dictionary<Item, int>();
-            foreach (Item item in allItems)
-            {
-                itemToQuantity.Add(item, 1);
-            }
-            
-            using (var tRepo = new TransactionRepo(new InventoryContext()))
-            {
-                tRepo.AddNewTransaction(itemToQuantity);
-                tRepo.Complete();
-            }*/
+            var upperdescValidator = new DescriptionValidation(descriptionUpper);
+            var lowerDescValidator = new DescriptionValidation(descriptionLower);
 
-            /*
-            DateTime dt = new DateTime(2017, 04, 20, 20, 24, 17);
-            Transaction transaction;
-            using (var dbContext = new InventoryContext())
-            {
-                transaction = dbContext.Set<Transaction>().Where(t => t.TimeOfTransaction == dt).First();
-            }*/
-
-            Item firstItem;
-            CurrentDelivery firstCurrDel;
-            using (var irepo = new ItemRepository(new InventoryContext()))
-            {
-                firstItem = irepo.GetByID(1);
-                irepo.Complete();
-            }
-            using (var dRepo = new CurrentDeliveriesRepo(new InventoryContext()))
-            {
-                firstCurrDel = dRepo.GetByID(9);
-                dRepo.Complete();
-            }
-
-            /*
-            using (var idRepo = new ItemDeliveriesRepo(new InventoryContext()))
-            {
-                var newID = new ItemDelivery()
-                {
-                    Item = firstItem,
-                    Delivery = firstCurrDel
-                };
-                idRepo.Add(newID);
-                idRepo.Complete();
-            }*/
-
-            using (var dbContext = new InventoryContext())
-            {
-                var newID = new ItemDelivery()
-                {
-                    Item = firstItem,
-                    ItemID = firstItem.ItemID,
-                    Delivery = firstCurrDel,
-                    DeliveryID = firstCurrDel.DeliveryID,
-                    Quantity = 1
-                };
-                dbContext.ItemDeliveries.Add(newID);
-                dbContext.SaveChanges();
-            }
-
-                NoF5Needed();
+            Console.WriteLine(upperdescValidator.isDescriptionLengthOk);
+            Console.WriteLine(lowerDescValidator.isDescriptionLengthOk);
         }
         public static void TestAddNewCurrentDelivery(DateTime expectedArrivalDate)
         {
