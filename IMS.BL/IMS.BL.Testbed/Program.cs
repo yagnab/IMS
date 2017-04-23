@@ -23,6 +23,7 @@ namespace IMS.BL.Testbed
         {
             TestBoundryConditionsOfDescriptionLength();
             NoF5Needed();
+            Console.WriteLine("random");
         }
         public static void TestBoundryConditionsOfDescriptionLength()
         {
