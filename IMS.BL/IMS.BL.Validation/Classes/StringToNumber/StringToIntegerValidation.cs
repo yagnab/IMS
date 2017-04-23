@@ -26,7 +26,16 @@ namespace IMS.BL.Validation
             //building error message
             if (!canConvertStringInteger)
             {
-                ErrorMessage += integerFieldName + " must be an integer.\n";
+                //can't convert to integer as integer type
+                //isn't large enough to house string with only digits
+                if(isStringNumberValid)
+                {
+                    ErrorMessage += integerFieldName + " is too large.\n";
+                }
+                else
+                {
+                    ErrorMessage += integerFieldName + " must be an integer.\n";
+                }
             }
         }
         /// <summary>

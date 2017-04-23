@@ -8,7 +8,6 @@ namespace IMS.BL.DataModel
 {
     public class TillDataRow
     {
-        public Item Item { get; set; }
         public string Description { get; private set; }
         public decimal TotalPrice { get; private set; }
         public decimal RRP { get; set; }
@@ -16,13 +15,12 @@ namespace IMS.BL.DataModel
 
         public TillDataRow(Item _Item, int _Quantity)
         {
-            Item = _Item;
             Quantity = _Quantity;
             Description = _Item.Description;
-            RRP = Item.RRP;
+            RRP = _Item.RRP;
 
             //Round to 2dp
-            TotalPrice = Math.Round(_Quantity * Item.RRP, 2); 
+            TotalPrice = Math.Round(_Quantity * _Item.RRP, 2); 
         }
     }
 }

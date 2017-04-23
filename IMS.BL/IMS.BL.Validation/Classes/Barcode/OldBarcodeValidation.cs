@@ -48,15 +48,15 @@ namespace IMS.BL.Validation
                 iRepo.Complete();
             }
 
-            //no matches found
-            if(itemFound == null)
-            {
-                return false;
-            }
-            //a match found
-            else
+            //matche found
+            if(itemFound.Count() > 0)
             {
                 return true;
+            }
+            //on matches
+            else
+            {
+                return false;
             }
         }
     }

@@ -66,6 +66,7 @@
     <Compile Include="Classes\Barcode\NewBarcodeValidation.cs" />
     <Compile Include="Classes\OldAccount\OldPasswordValidation.cs" />
     <Compile Include="Classes\OldAccount\OldUsernameValidation.cs" />
+    <Compile Include="Classes\TillDataRowValidation.cs" />
     <Compile Include="Classes\ValidationBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\StringToNumber\QuantityValidation.cs" />

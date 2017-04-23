@@ -51,8 +51,7 @@ namespace IMS.BL.Validation
         {
             try
             {
-                decimal realDecimal = Decimal.Parse(_decimal);
-                realDecimal = Math.Round(realDecimal, 2);
+                decimal realDecimal = StringToDecimalValidation.DecimalFromString(_decimal);
 
                 //worked
                 return true;

@@ -17,11 +17,37 @@ using IMS.BL.Validation;
 
 namespace IMS.BL.Testbed
 {
+    class Test
+    {
+        List<int> testList = new List<int>()
+        {
+            1,2,3
+        };
+        public List<int> TestList
+        {
+            get
+            {
+                return testList;
+            }
+            set
+            {
+                testList = value;
+            }
+        }
+
+        public void PrinttestList()
+        {
+            testList.ForEach(i => Console.WriteLine(i));
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            TestBoundryConditionsOfDescriptionLength();
+            var test = new Test();
+            test.TestList.Add(12);
+            test.PrinttestList();
+
             NoF5Needed();
         }
         public static void TestBoundryConditionsOfDescriptionLength()

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using IMS.BL.DataModel;
+using System.Collections.ObjectModel;
 
 namespace IMS.UI.ViewModels
 {
@@ -21,6 +21,20 @@ namespace IMS.UI.ViewModels
             set
             {
                 barcode = value;
+            }
+        }
+
+        ObservableCollection<TillDataRow> rows = new ObservableCollection<TillDataRow>();
+        public ObservableCollection<TillDataRow> Rows
+        {
+            get
+            {
+                return rows;
+            }
+            set
+            {
+                rows = value;
+                OnPropertyChanged();
             }
         }
 
