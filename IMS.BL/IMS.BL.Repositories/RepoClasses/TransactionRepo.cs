@@ -22,34 +22,29 @@ namespace IMS.BL.Repositories
             {
                 TimeOfTransaction = now
             };
-            using (var tRepo = new TransactionRepo(new InventoryContext()))
+
+            using (var dbContext = new InventoryContext())
             {
-                tRepo.Add(newTransaction);
-                tRepo.Complete();
+                dbContext.Transactions.Add(newTransaction);
+                dbContext.SaveChanges();
             }
 
-            //getting transaction from db
-            using (var tRepo = new TransactionRepo(new InventoryContext()))
+            using (var dbContext = new InventoryContext())
             {
-                newTransaction = tRepo.Find(t => t.TimeOfTransaction == now).First();
-                tRepo.Complete();
-            }
-
-            //creating itemTransactions
-            foreach (KeyValuePair<Item, int> i_q in itemsToQuantity)
-            {
-                using (var itRepo = new ItemTransactionsRepo(new InventoryContext()))
+                foreach (KeyValuePair<Item, int> i_q in itemsToQuantity)
                 {
                     var newi_t = new ItemTransaction()
                     {
-                        Item = i_q.Key,
-                        Transaction = newTransaction,
+                        Item = dbContext.Items.Where(i => i.ItemID == i_q.Key.ItemID).First(),
+                        Transaction = dbContext.Transactions
+                            .Where(t => t.TransactionID == newTransaction.TransactionID)
+                            .First(),
                         Quantity = i_q.Value
                     };
-                    itRepo.Add(newi_t);
-
-                    itRepo.Complete();
+                    dbContext.ItemTransactions.Add(newi_t);
                 }
+
+                dbContext.SaveChanges();
             }
 
             //setting totalValue
@@ -59,22 +54,33 @@ namespace IMS.BL.Repositories
                 //totalValue += item.RRP * itemTransaction.Quantity
                 totalValue += i_q.Key.RRP * i_q.Value;
             }
-            newTransaction.TotalValue = totalValue;
 
-            //Reduce QuantityStockLevel of items by itemsToQuantity.value
+            //setting new total value
+            using (var dbContext = new InventoryContext())
+            {
+                var targetTransaction = dbContext.Transactions
+                    .Where(t => t.TransactionID == newTransaction.TransactionID)
+                    .First();
+                targetTransaction.TotalValue = totalValue;
+                dbContext.SaveChanges();
+            }
+
+                //Reduce QuantityStockLevel of items by itemsToQuantity.value
             ReduceItemQuantity(itemsToQuantity);
         }
 
         void ReduceItemQuantity(Dictionary<Item, int> itemsToQuantity)
         {
-            foreach(KeyValuePair<Item, int> i_q in itemsToQuantity)
+            using (var dbContext = new InventoryContext())
             {
-                using (var iRepo = new ItemRepository(new InventoryContext()))
+                foreach (KeyValuePair<Item, int> i_q in itemsToQuantity)
                 {
-                    var item = iRepo.GetByID(i_q.Key.ItemID);
+
+                    var item = dbContext.Items.Where(i => i.ItemID == i_q.Key.ItemID).First();
                     item.QuantityStockLevel -= i_q.Value;
-                    iRepo.Complete();
                 }
+
+                dbContext.SaveChanges();
             }
         }
     }

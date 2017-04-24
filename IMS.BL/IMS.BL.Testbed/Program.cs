@@ -14,41 +14,62 @@ using System.Data.Objects;
 using IMS.BL.Repositories;
 using System.Text.RegularExpressions;
 using IMS.BL.Validation;
+using System.Threading;
 
 namespace IMS.BL.Testbed
 {
-    class Test
-    {
-        List<int> testList = new List<int>()
-        {
-            1,2,3
-        };
-        public List<int> TestList
-        {
-            get
-            {
-                return testList;
-            }
-            set
-            {
-                testList = value;
-            }
-        }
-
-        public void PrinttestList()
-        {
-            testList.ForEach(i => Console.WriteLine(i));
-        }
-    }
     class Program
     {
         static void Main(string[] args)
         {
-            var test = new Test();
-            test.TestList.Add(12);
-            test.PrinttestList();
+            //try to add i_t w/ itemId = 4, transactionID = 1
+            TryAddNewTransactionUsingTRepo();
 
             NoF5Needed();
+        }
+        public static void TryAddNewTransactionIContext()
+        {
+            var now = DateTime.Now;
+
+            //creating transaction
+            var transaction = new Transaction()
+            {
+                TimeOfTransaction = now
+            };
+
+            using (var dbContext = new InventoryContext())
+            {
+                dbContext.Transactions.Add(transaction);
+                dbContext.SaveChanges();
+            }
+            
+            //retrieve transaction to get id
+            using (var dbContext = new InventoryContext())
+            {
+                transaction.TotalValue = 12;
+                dbContext.SaveChanges();
+            }
+            Console.WriteLine("ID : " + transaction.TransactionID);
+        }
+        public static void TryAddNewTransactionUsingTRepo()
+        {
+            List<Item> itemsToAdd = new List<Item>();
+            Dictionary<Item, int> itemToInt = new Dictionary<Item, int>();
+
+            using (var iRepo = new ItemRepository(new InventoryContext()))
+            {
+                //first 3 items in db
+                itemsToAdd = iRepo.GetAll().Take(5).ToList();
+            }
+
+            //first 3 items, all w/ quantity = 1
+            itemsToAdd.ForEach(i => itemToInt.Add(i, 1));
+
+            using (var tRepo = new TransactionRepo(new InventoryContext()))
+            {
+                tRepo.AddNewTransaction(itemToInt);
+                tRepo.Complete();
+            }
         }
         public static void TestBoundryConditionsOfDescriptionLength()
         {
