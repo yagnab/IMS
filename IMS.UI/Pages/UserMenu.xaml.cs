@@ -25,6 +25,7 @@ namespace IMS.UI
             InitializeComponent();
         }
 
+        //Displaying pages on currently open UIWindow
         private void viewTblsBtn_Click(object sender, RoutedEventArgs e)
         {
             var viewTblsPage = UICreatePage.GetViewTblPage();
@@ -70,6 +71,12 @@ namespace IMS.UI
         private void lowStockBtn_Click(object sender, RoutedEventArgs e)
         {
             var ui = UICreatePage.GetNewLowStockPage();
+            LoginService.Instance.currentUIWindow.pageHolder.Content = ui;
+        }
+
+        private void addDeliveryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var ui = new AddDeliveryPage();
             LoginService.Instance.currentUIWindow.pageHolder.Content = ui;
         }
     }

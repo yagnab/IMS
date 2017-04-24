@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Classes\AccountValidation.cs" />
     <Compile Include="Classes\AdminAccountValidation.cs" />
+    <Compile Include="Classes\IncreaseQuantityValidation.cs" />
     <Compile Include="Classes\OldAccount\AdminValidation.cs" />
     <Compile Include="Classes\NewAccount\NewAccountValidation.cs" />
     <Compile Include="Classes\NewAccount\NewUsernameValidation.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Classes\Barcode\OldBarcodeValidation.cs" />
     <Compile Include="Classes\CatagoryValidation.cs" />
     <Compile Include="Classes\DescriptionValidation.cs" />
+    <Compile Include="Classes\StringToNumber\NewQuantityValidation.cs" />
     <Compile Include="Classes\StringToNumber\StringToNumberValidation.cs" />
     <Compile Include="Classes\ItemCatagoryValidation.cs" />
     <Compile Include="Classes\OldNewAccountValidation.cs" />

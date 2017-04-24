@@ -8,11 +8,12 @@
       d:DesignHeight="600"   d:DesignWidth="1366"
       Title="Main menu">
 
-      <Grid>
-        <Button x:Name="lowStockBtn" Content="Low Stock" HorizontalAlignment="Left" Margin="41,141,0,0" VerticalAlignment="Top" Width="75" Click="lowStockBtn_Click"/>
+    <Grid>
+        <Button x:Name="lowStockBtn" Content="Low Stock" HorizontalAlignment="Left" Margin="61,141,0,0" VerticalAlignment="Top" Width="75" Click="lowStockBtn_Click"/>
         <Button x:Name="tillModeBtn" Content="Till Mode" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="302,141,0,0" Click="tillModeBtn_Click"/>
-        <Button x:Name="analyticsBtn" Content="Analytics" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="302,264,0,0" Click="analyticsBtn_Click"/>
-        <Button x:Name="viewTransactionsBtn" Content="Transactions" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="550,141,0,0" Click="viewTransactionsBtn_Click"/>
-        <Button x:Name="viewItemsBtn" Content="Items"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="41,255,0,0" Click="viewItemsBtn_Click"/>
+        <Button x:Name="analyticsBtn" Content="Analytics" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="302,246,0,0" Click="analyticsBtn_Click"/>
+        <Button x:Name="viewTransactionsBtn" Content="Transactions" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Margin="550,141,0,0" Click="viewTransactionsBtn_Click"/>
+        <Button x:Name="viewItemsBtn" Content="Items"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="62,246,0,0" Click="viewItemsBtn_Click"/>
+        <Button x:Name="addDeliveryBtn" Content="Add delivery"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Margin="550,246,0,0" Click="addDeliveryBtn_Click"/>
     </Grid>
 </Page>

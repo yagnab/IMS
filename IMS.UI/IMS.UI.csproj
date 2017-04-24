@@ -111,6 +111,9 @@
     <Compile Include="Creating new account\AdminDetailsPage.xaml.cs">
       <DependentUpon>AdminDetailsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddDeliveryPage.xaml.cs">
+      <DependentUpon>AddDeliveryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AnalyticsPage.xaml.cs">
       <DependentUpon>AnalyticsPage.xaml</DependentUpon>
     </Compile>
@@ -181,6 +184,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Creating new account\AdminDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddDeliveryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
