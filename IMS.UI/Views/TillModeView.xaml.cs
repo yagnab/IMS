@@ -121,7 +121,10 @@ namespace IMS.UI.Views
         }
         private void submitBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            using (var tRepo = new TransactionRepo(new InventoryContext()))
+            {
+                tRepo.Complete();
+            }
         }
 
         /// <summary>
