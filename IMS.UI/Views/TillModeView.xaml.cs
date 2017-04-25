@@ -42,6 +42,9 @@ namespace IMS.UI.Views
         /// <param name="e"></param>
         private void AddNewItemBtn_Click(object sender, RoutedEventArgs e)
         {
+            //clear error from previous entry
+            ErrorLbl.Content = "";
+
             string barcode = BarcodeTB.Text;
             string quantity = QuantityTB.Text;
             var tdrV = new TillDataRowValidation(barcode, quantity);
@@ -68,9 +71,10 @@ namespace IMS.UI.Views
             {
                 ErrorLbl.Content = tdrV.ErrorMessage;
             }
-
+           
             //allow for reuse
             tdrV.Complete();
+            ClearInputs();
         }
 
         /// <summary>
@@ -89,7 +93,17 @@ namespace IMS.UI.Views
             BarcodeTB.Text = "";
             QuantityTB.Text = "";
         }
-        
+        /// <summary>
+        /// This will clear inputs
+        /// The datagrid and errorLbl
+        /// </summary>
+        void ClearAll()
+        {
+            ClearInputs();
+            ErrorLbl.Content = "";
+            dataContext.Rows.Clear();
+            ItemDisplayDatGrd.UpdateLayout();
+        }
         /// <summary>
         /// Loop through all rows' quantity column
         /// and add to total. The total is refreshed
@@ -121,28 +135,42 @@ namespace IMS.UI.Views
         }
         private void submitBtn_Click(object sender, RoutedEventArgs e)
         {
-            using (var tRepo = new TransactionRepo(new InventoryContext()))
+            try
             {
-                tRepo.Complete();
+                //dictionary to map an item to its quantity in this transaction
+                Dictionary<Item, int> itemToQuantity = new Dictionary<Item, int>();
+                foreach (TillDataRow tdr in ItemDisplayDatGrd.Items)
+                {
+                    itemToQuantity.Add(tdr.Item, tdr.Quantity);
+                }
+
+                using (var tRepo = new TransactionRepo(new InventoryContext()))
+                {
+                    tRepo.AddNewTransaction(itemToQuantity);
+                    tRepo.Complete();
+                }
+
+                //it worked
+                MessageBox.Show("Transaction added");
+                ClearAll();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("An error occured. Try again");
             }
         }
 
+        //NOTE: User can delete item by clicking the button in the row
+        
         /// <summary>
-        /// User double clicked a datagrid Row.
-        /// Therefor, delete the row
+        /// Taking user to the items page
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ItemDisplayDatGrd_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void lookupBtn_Click(object sender, RoutedEventArgs e)
         {
-            int indexDelete = ItemDisplayDatGrd.SelectedIndex;
-            MessageBox.Show(indexDelete.ToString());
-        }
-
-        private void ItemDisplayDatGrd_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DataGridRow tdr = sender as DataGridRow;
-            MessageBox.Show(tdr.GetIndex().ToString());
+            var ui = new ItemsPage();
+            LoginService.Instance.currentUIWindow.pageHolder.Content = ui;
         }
     }
 }

@@ -76,9 +76,5 @@
                                     Width="*" />
             </DataGrid.Columns>
         </DataGrid>
-
-
-
-
     </Grid>
 </Page>

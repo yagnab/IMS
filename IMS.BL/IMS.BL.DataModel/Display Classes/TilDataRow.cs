@@ -12,9 +12,12 @@ namespace IMS.BL.DataModel
         public decimal TotalPrice { get; private set; }
         public decimal RRP { get; set; }
         public int Quantity { get; private set; }
-
+        //This wont be displayed to user
+        //Its for querying the database
+        public Item Item { get; private set; }
         public TillDataRow(Item _Item, int _Quantity)
         {
+            Item = _Item;
             Quantity = _Quantity;
             Description = _Item.Description;
             RRP = _Item.RRP;
