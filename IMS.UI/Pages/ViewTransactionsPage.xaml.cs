@@ -57,7 +57,7 @@ namespace IMS.UI
             //rerender labels
             TransactionIDLbl.UpdateLayout();
             TotalValueLbl.UpdateLayout();
-            TimeOfTransaction.UpdateLayout();
+            TimeOfTransactionLbl.UpdateLayout();
         }
     }
 }

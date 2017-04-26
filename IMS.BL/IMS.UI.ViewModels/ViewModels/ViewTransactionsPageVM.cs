@@ -16,9 +16,47 @@ namespace IMS.UI.ViewModels
         /// </summary>
         public List<Transaction> Transactions { get; private set; }
 
-        public int CurrentTransactionID { get; private set; }
-        public decimal CurrentTotalValue { get; private set; }
-        public DateTime CurrentTimeOfTransaction { get; private set; }
+        int _CurrentTransactionID;
+        public int CurrentTransactionID
+        {
+            get
+            {
+                return _CurrentTransactionID;
+            }
+            set
+            {
+                _CurrentTransactionID = value;
+                OnPropertyChanged();
+            }
+        }
+
+        decimal _CurrentTotalValue;
+        public decimal CurrentTotalValue
+        {
+            get
+            {
+                return _CurrentTotalValue;
+            }
+            set
+            {
+                _CurrentTotalValue = value;
+                OnPropertyChanged();
+            }
+        }
+
+        DateTime _CurrentTimeOfTransaction;
+        public DateTime CurrentTimeOfTransaction
+        {
+            get
+            {
+                return _CurrentTimeOfTransaction;
+            }
+            set
+            {
+                _CurrentTimeOfTransaction = value;
+                OnPropertyChanged();
+            }
+        }
 
         private Transaction _Transaction;
         public Transaction CurrentTransaction

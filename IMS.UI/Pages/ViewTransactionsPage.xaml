@@ -21,7 +21,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120" />
             <ColumnDefinition Width="100" />
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="400" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         
@@ -29,7 +29,7 @@
         <StackPanel x:Name="SayPropertiesStackPanel" Orientation="Vertical" Grid.Row="0" Grid.Column="0">
             <Label x:Name="TransactionIDLbl" Content="{Binding CurrentTransactionID}"/>
             <Label x:Name="TotalValueLbl" Content="{Binding CurrentTotalValue}"/>
-            <Label x:Name="TimeOfTransaction" Content="{Binding CurrentTimeOfTransaction}"/>
+            <Label x:Name="TimeOfTransactionLbl" Content="{Binding CurrentTimeOfTransaction}"/>
         </StackPanel>
 
         <Grid Grid.Row="1" Grid.ColumnSpan="2" >
@@ -58,9 +58,9 @@
                   AutoGenerateColumns="False" 
                   ItemsSource="{Binding CurrentItemTransactionDisplays}">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="ItemID"
+                <DataGridTextColumn x:Name="Barcode"
                                     Binding="{Binding Barcode}"
-                                    Header="ItemID"
+                                    Header="Barcode"
                                     Width="SizeToHeader" />
                 <DataGridTextColumn x:Name="ItemDesc"
                                     Binding="{Binding Description}"
