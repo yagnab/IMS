@@ -40,15 +40,24 @@ namespace IMS.UI
             Transaction selectedTransaction;
             using (var TRepo = new TransactionRepo(new InventoryContext()))
             {
-                selectedTransaction = TRepo.GetByID(selectedTransactionID);
+                selectedTransaction = TRepo.GetByID(selectedTransactionID, "ItemTransactions");
                 TRepo.Complete();
             }
 
             dataContext.SelectionChanged(selectedTransaction);
+            UpdateAll();
+        }
 
+        void UpdateAll()
+        {
             //rerender datagrids
             TransactionsDisplay.UpdateLayout();
             ItemTransactionDataGrid.UpdateLayout();
+
+            //rerender labels
+            TransactionIDLbl.UpdateLayout();
+            TotalValueLbl.UpdateLayout();
+            TimeOfTransaction.UpdateLayout();
         }
     }
 }

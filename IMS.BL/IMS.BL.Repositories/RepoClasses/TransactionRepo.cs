@@ -102,5 +102,14 @@ namespace IMS.BL.Repositories
                     .ToList();
             }
         }
+
+        public Transaction GetByID(int id, string include)
+        {
+            return Context
+                .Set<Transaction>()
+                .Include(include)
+                .Where(t => t.TransactionID == id)
+                .First();
+        }
     }
 }
