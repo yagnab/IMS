@@ -5,15 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using IMS.BL.DataModel;
 using IMS.UI.ViewModels;
+using IMS.BL.DataModel;
+using IMS.BL.Repositories;
 
 namespace IMS.UI
 {
@@ -22,80 +16,39 @@ namespace IMS.UI
     /// </summary>
     public partial class ViewTransactionsPage : Page
     {
-        ViewTransactionsPageVM _dataContext;
+        ViewTransactionsPageVM dataContext;
 
         public ViewTransactionsPage()
         {
             InitializeComponent();
-            //custom load event
-            ViewTransactionsPage_Loaded();
 
+            //setting DataContext
+            dataContext = new ViewTransactionsPageVM();
+            DataContext = dataContext;
+
+            //initial selection change
+            TransactionsDisplay.SelectedIndex = 0;
         }
         
         private void TransactionsDisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //update _dataContext
-            //then update view on datagrid
-            var selectedTransID = (this.TransactionsDisplay.SelectedItem as Transaction).TransactionID;
+            //update dataContext w/ new transaction
 
-            using (var dbContext = new InventoryContext())
+            //datagrid display transactionID = 1 in index = 0; therefor + 1
+            int selectedTransactionID = TransactionsDisplay.SelectedIndex + 1;
+
+            Transaction selectedTransaction;
+            using (var TRepo = new TransactionRepo(new InventoryContext()))
             {
-                //cast selected item to transaction, then gets its id
-                _dataContext.Transaction = dbContext.Transactions
-                    .Include("ItemTransactions")
-                    .Where(t => t.TransactionID == selectedTransID)
-                    .First();
-                _dataContext.ItemTransactions = _dataContext.Transaction.ItemTransactions;
-
-                //Updates the datagrid view
-                this.ItemTransactionDataGrid.UpdateLayout();
-
+                selectedTransaction = TRepo.GetByID(selectedTransactionID);
+                TRepo.Complete();
             }
 
-        }
+            dataContext.SelectionChanged(selectedTransaction);
 
-        /// <summary>
-        /// The custom defined
-        /// loaded event for this page
-        /// </summary>
-        private void ViewTransactionsPage_Loaded()
-        {
-            _dataContext = new ViewTransactionsPageVM();
-            using (var dbContext = new InventoryContext())
-            {
-                //sets datacontext to first transaction from table
-                _dataContext.Transactions = dbContext.Transactions.Include("ItemTransactions").ToList();
-                if(_dataContext.Transaction != null)
-                {
-                    _dataContext.Transaction = _dataContext.Transactions.First();
-                    _dataContext.ItemTransactions = _dataContext.Transaction.ItemTransactions.ToList();
-
-                    this.DataContext = _dataContext;
-
-                    this.TransactionsDisplay.SelectedIndex = 0;
-                }
-            }
-        }
-        
-        void SetNewDataContext()
-        {
-            var selectedTransID = (this.TransactionsDisplay.SelectedItem as Transaction).TransactionID;
-            
-            using (var dbContext = new InventoryContext())
-            {
-                //cast selected item to transaction, then gets its id
-                _dataContext.Transaction = dbContext.Transactions
-                    .Include("ItemTransactions")
-                    .Where(t => t.TransactionID == selectedTransID)
-                    .First();
-                _dataContext.ItemTransactions = _dataContext.Transaction.ItemTransactions;
-
-                //Updates the datagrid view
-                this.ItemTransactionDataGrid.UpdateLayout();
-                
-            }
-            
-
+            //rerender datagrids
+            TransactionsDisplay.UpdateLayout();
+            ItemTransactionDataGrid.UpdateLayout();
         }
     }
 }

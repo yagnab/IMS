@@ -83,5 +83,24 @@ namespace IMS.BL.Repositories
                 dbContext.SaveChanges();
             }
         }
+
+        public List<Transaction> AllTransactionsIncludeItemTransaction()
+        {
+            using (var dbContext = new InventoryContext())
+            {
+                return dbContext.Transactions.Include("ItemTransactions").ToList();
+            }
+        }
+
+        public List<Transaction> AllTransactionsIncludeItemTransactionItem()
+        {
+            using (var dbContext = new InventoryContext())
+            {
+                    return dbContext.Transactions
+                    .Include("ItemTransactions")
+                    //.Include("Item")
+                    .ToList();
+            }
+        }
     }
 }

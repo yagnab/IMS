@@ -26,10 +26,10 @@
         </Grid.ColumnDefinitions>
         
         <!-- Controls -->
-        <StackPanel x:Name="SayPropertiesStackPanel" Orientation="Vertical" Grid.Row="0" Grid.Column="0" DataContext="{Binding Transaction}">
-            <Label x:Name="TransactionIDLbl" Content="{Binding ID}"/>
-            <Label x:Name="TotalValueLbl" Content="{Binding TotalValue}"/>
-            <Label x:Name="TimeOfTransaction" Content="{Binding TimeOfTransaction}"/>
+        <StackPanel x:Name="SayPropertiesStackPanel" Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+            <Label x:Name="TransactionIDLbl" Content="{Binding CurrentTransactionID}"/>
+            <Label x:Name="TotalValueLbl" Content="{Binding CurrentTotalValue}"/>
+            <Label x:Name="TimeOfTransaction" Content="{Binding CurrentTimeOfTransaction}"/>
         </StackPanel>
 
         <Grid Grid.Row="1" Grid.ColumnSpan="2" >
@@ -45,7 +45,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding TimeOfTransaction}" />
+                            <Label Content="{Binding TransactionID}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -56,18 +56,18 @@
         <DataGrid Grid.RowSpan="2" Grid.Column="2" 
                   x:Name="ItemTransactionDataGrid" 
                   AutoGenerateColumns="False" 
-                  ItemsSource="{Binding ItemTransactions}">
+                  ItemsSource="{Binding CurrentItemTransactionDisplays}">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="ItemID"
-                                    Binding="{Binding ItemID}"
+                                    Binding="{Binding Barcode}"
                                     Header="ItemID"
                                     Width="SizeToHeader" />
                 <DataGridTextColumn x:Name="ItemDesc"
-                                    Binding="{Binding Item.Description}"
+                                    Binding="{Binding Description}"
                                     Header="Description"
                                     Width="Auto" />
                 <DataGridTextColumn x:Name="ItemRRP"
-                                    Binding="{Binding Item.RRP}"
+                                    Binding="{Binding RRP}"
                                     Header="RRP (£)"
                                     Width="SizeToHeader" />
                 <DataGridTextColumn x:Name="ItemQuantity"

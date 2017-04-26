@@ -67,7 +67,9 @@
     <Compile Include="Display Classes\ItemDeliveryDisplay.cs" />
     <Compile Include="Display Classes\ItemDisplay.cs" />
     <Compile Include="Display Classes\ItemReservationDisplay.cs" />
+    <Compile Include="Display Classes\ItemTransactionDisplay.cs" />
     <Compile Include="Display Classes\TilDataRow.cs" />
+    <Compile Include="Display Classes\TransactionDisplay.cs" />
     <Compile Include="Enums\GraphTimePeriod.cs" />
     <Compile Include="Enums\InvalidationType.cs" />
     <Compile Include="Enums\ItemCatagory.cs" />

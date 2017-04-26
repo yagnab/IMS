@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using IMS.BL.Repositories;
 using IMS.BL.DataModel;
 using IMS.UI;
 using System.ComponentModel;
@@ -12,8 +11,17 @@ namespace IMS.UI.ViewModels
 {
     public class ViewTransactionsPageVM : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Readonly so no need OnPropertyChanged()
+        /// </summary>
+        public List<Transaction> Transactions { get; private set; }
+
+        public int CurrentTransactionID { get; private set; }
+        public decimal CurrentTotalValue { get; private set; }
+        public DateTime CurrentTimeOfTransaction { get; private set; }
+
         private Transaction _Transaction;
-        public Transaction Transaction
+        public Transaction CurrentTransaction
         {
             get
             {
@@ -25,33 +33,36 @@ namespace IMS.UI.ViewModels
                 OnPropertyChanged();
             }
         }
-        private List<Transaction> _Transactions;
-        public List<Transaction> Transactions
+        
+        private List<ItemTransactionDisplay> _CurrentItemTransactionDisplays;
+        public List<ItemTransactionDisplay> CurrentItemTransactionDisplays
         {
             get
             {
-                return _Transactions;
+                return _CurrentItemTransactionDisplays;
             }
             set
             {
-                _Transactions = value;
-                OnPropertyChanged();
-            }
-        }
-        private List<ItemTransaction> _ItemTransactions;
-        public List<ItemTransaction> ItemTransactions
-        {
-            get
-            {
-                return _ItemTransactions;
-            }
-            set
-            {
-                _ItemTransactions = value;
+                _CurrentItemTransactionDisplays = value;
                 OnPropertyChanged();
             }
         }
 
+        private List<ItemTransaction> _CurrentItemTransactions;
+        public List<ItemTransaction> CurrentItemTransactions
+        {
+            get
+            {
+                return _CurrentItemTransactions;
+            }
+            set
+            {
+                _CurrentItemTransactions = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #region OnPropertyChanged
         //will tell view that a property has changed
         //may need to rerender a control
         public event PropertyChangedEventHandler PropertyChanged;
@@ -62,6 +73,36 @@ namespace IMS.UI.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(caller));
             }
         }
+        #endregion
 
+        public ViewTransactionsPageVM()
+        {
+            //assigns default values to display
+            using (var TRepo = new TransactionRepo(new InventoryContext()))
+            {
+                Transactions = TRepo.AllTransactionsIncludeItemTransaction();
+                TRepo.Complete();
+            }
+
+            //Default values from first transaction from db
+            SelectionChanged(Transactions[0]);
+        }
+
+        /// <summary>
+        /// Called when selection for
+        /// CurrentItem has changed
+        /// </summary>
+        public void SelectionChanged(Transaction selectedTransaction)
+        {
+            //lists
+            CurrentTransaction = selectedTransaction;
+            CurrentItemTransactions = CurrentTransaction.ItemTransactions;
+            CurrentItemTransactionDisplays = ItemTransactionDisplay.GetRange(CurrentItemTransactions);
+
+            //scalar values
+            CurrentTransactionID = CurrentTransaction.TransactionID;
+            CurrentTotalValue = CurrentTransaction.TotalValue;
+            CurrentTimeOfTransaction = CurrentTransaction.TimeOfTransaction;
+        }
     }
 }

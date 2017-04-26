@@ -22,8 +22,20 @@ namespace IMS.BL.Testbed
     {
         static void Main(string[] args)
         {
-            //try to add i_t w/ itemId = 4, transactionID = 1
-            TryAddNewTransactionUsingTRepo();
+            var itemTransactionDisplays = new List<ItemTransactionDisplay>();
+
+            using (var tRepo = new TransactionRepo(new InventoryContext()))
+            {
+                Transaction transction = tRepo.AllTransactionsIncludeItemTransaction().ToList()[24];
+
+                itemTransactionDisplays = ItemTransactionDisplay.GetRange(transction.ItemTransactions);
+            }
+
+            itemTransactionDisplays.ForEach(itd => Console.WriteLine(string.Format("Barcode: {0}, Description: {1}, RRP: {2}, Quantity: {3}"
+                , itd.Barcode
+                , itd.Description
+                , itd.RRP
+                , itd.Quantity)));
 
             NoF5Needed();
         }

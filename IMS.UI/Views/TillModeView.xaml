@@ -53,8 +53,7 @@
                 <DataGrid x:Name="ItemDisplayDatGrd" 
                       AutoGenerateColumns="False"
                       Grid.Row="0" Grid.Column="0"
-                      ItemsSource="{Binding Rows}"
-                      MouseRightButtonDown="ItemDisplayDatGrd_MouseRightButtonDown">
+                      ItemsSource="{Binding Rows}">
                     <DataGrid.Columns>
                         <DataGridTextColumn x:Name="Description"
                                     Header="Description"
