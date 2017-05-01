@@ -53,25 +53,6 @@ namespace IMS.UI
             {
                 errorBlock.Text = aV.ErrorMessage;
             }
-            /*
-            //Validate if details match existing admin account
-            using(var dbContext = new InventoryContext())
-            {
-                AdminAccount admin = AdminAccountValidation.ValidateAdminAccount(username, password, dbContext);
-
-                //Validation failed
-                if( admin == null)
-                {
-                    errorBlock.Text = "Enter valid admin account details";
-                    
-                }
-                else
-                {
-                    //Allow admin to pick access levels
-                    var ui = UICreatePage.CreateNewSetAccessPage();
-                    CreateNewAccountService.Instance.Window.Content = ui;
-                }
-            }*/
         }
     }
 }

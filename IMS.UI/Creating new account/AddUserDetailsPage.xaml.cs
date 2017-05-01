@@ -86,37 +86,7 @@ namespace IMS.UI
             //Take action depending on validation from above
             IsInputValid(errorMessage, username, password);*/
         }
-        /*
-        #region Validation
-        string ValidateInputs(string username, string password, string confirmPassword)
-        {
-            string errorMessage = "";
-            var naV = new NewAccountValidation(username, password, confirmPassword);
-            errorMessage += UsernameValidation.ValidateUsername(username);
-            errorMessage += PasswordValidation.ValidatePassword(password);
-            errorMessage += ConfirmPasswordValidation.ValidateConfirmPassword(password, confirmPassword);
-            return errorMessage;
-        }
-        void IsInputValid(string errorMessage, string username, string password)
-        {
-            //If no error is found
-            if (errorMessage == "")
-            {
-                //stores username and hashed password
-                CreateNewAccountService.Instance.username = username;
-                CreateNewAccountService.Instance.password = UserAccount.stringToHashString(password);
-
-                var ui = UICreatePage.GetAdminDetailsPage();
-                CreateNewAccountService.Instance.Window.Content = ui;
-            }
-            else
-            {
-                ErrorTxt.Text = errorMessage;
-                ClearInputFields();
-            }
-        }
-        #endregion*/
-
+        
         #region Utility methods
         void ClearInputFields()
         {

@@ -51,7 +51,7 @@
                  Grid.Row="5"
                  GotFocus="RRPTxt_GotFocus"
                  LostFocus="RRPTxt_LostFocus"/>
-        <TextBox Text="Enter starting quantity level"
+        <TextBox Text="Enter the starting quantity"
                  x:Name="StartStockLvlTxt"
                  Grid.Column="1"
                  Grid.Row="7"

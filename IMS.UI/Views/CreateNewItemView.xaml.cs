@@ -41,8 +41,8 @@ namespace IMS.UI.Views
             //Set textboxes to default
             BarcodeTxt.Text = "Enter a barcode";
             DescTxt.Text = "Enter description";
-            BarcodeTxt.Text = "Enter RRP";
-            BarcodeTxt.Text = "Enter starting quantity level";
+            RRPTxt.Text = "Enter RRP";
+            StartStockLvlTxt.Text = "Enter the starting quantity";
 
             //Default is first catagory
             CatagoryCmbBx.SelectedIndex = 0;
@@ -84,27 +84,7 @@ namespace IMS.UI.Views
 
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            string errorMessage = "";
-
-            //Objects required for validaiton
-            var bv = new BarcodeValidation();
-            var dv = new DescriptionValidation();
-            var qv = new QuantityValidation();
-            var icv = new ItemCatagoryValidation();
-
-            //Vars for validation
-            string barcode = BarcodeTxt.Text;
-            string description = DescTxt.Text;
-            string rrp = RRPTxt.Text;
-            string stockLevel = StartStockLvlTxt.Text;
-            int catagoryIndex = CatagoryCmbBx.SelectedIndex;
-
-            //Carry out validation
-            errorMessage = ValidateFields(errorMessage, barcode, description, rrp, stockLevel,
-                catagoryIndex, dv, bv, qv, icv);
-            ValidationPassOrNot(errorMessage, barcode, rrp, description, qv, icv);*/
-
+            
             //Vars for validation
             string barcode = BarcodeTxt.Text;
             string description = DescTxt.Text;
@@ -132,22 +112,21 @@ namespace IMS.UI.Views
         private void RRPTxt_LostFocus(object sender, RoutedEventArgs e)
         {
             string rrp = RRPTxt.Text;
-            var rrpV = new RRPValidation(rrp);
-            
-            //If validation failed
-            if(!rrpV.isStringDecimalValid)
-            {
-                //Shows error
-                ErrorLbl.Content = rrpV.ErrorMessage;
 
-                //Reset RRPTxt
+            try
+            {
+                decimal decRRP = Math.Round(Convert.ToDecimal(rrp), 2);
+
+                //it worked
+                RRPTxt.Text = decRRP.ToString();
+            }
+            catch(Exception)
+            {
+                ErrorLbl.Content = "RRP must be a decimal";
+
+                //resetting to default
                 RRPTxt.Text = "Enter RRP";
                 RRPTxt.GotFocus += RRPTxt_GotFocus;
-            }
-            else
-            {
-                //This will round to 2dp to make it look like curreny
-                RRPTxt.Text = RRPValidation.DecimalFromString(rrp).ToString();
             }
         }
 
